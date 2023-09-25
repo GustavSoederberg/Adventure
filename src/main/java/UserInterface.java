@@ -6,13 +6,13 @@ public class UserInterface {
     public void start() {
         System.out.println("Welcome to the adventure game!");
         String userChoice = "";
-
+        userChoice = input.next();
         switch (userChoice) {
-            "north" -> adventure.move(userChoice);
-            "west" -> adventure.move(userChoice);
-            "east" -> adventure.move(userChoice);
-            "south" -> adventure.move(userChoice);
-            "exit" -> System.exit(0);
+            case "north" -> adventure.move(userChoice);
+            case "west" -> adventure.move(userChoice);
+            case "east" -> adventure.move(userChoice);
+            case "south" -> adventure.move(userChoice);
+            case "exit" -> System.exit(0);
         }
     }
 }

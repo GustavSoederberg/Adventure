@@ -10,7 +10,8 @@ public class Adventure {
     private Room room8;
     private Room room9;
     private Room current;
-    public Adventure(){
+
+    public Adventure() {
         room1 = new Room("Room 1", " ");
         room2 = new Room("Room 2", " ");
         room3 = new Room("Room 3", " ");
@@ -23,7 +24,7 @@ public class Adventure {
         current = room1;
     }
 
-    public void setAllRooms(){
+    public void setAllRooms() {
         //Room 1
         room1.setEast(room2);
         room1.setSouth(room4);
@@ -59,14 +60,29 @@ public class Adventure {
         room9.setNorth(room6);
     }
 
-    public void move(String direction){
-
-        switch(direction){
-            case "east" -> current = current.getEast();
-            case "north" -> current = current.getNorth();
-            case "south" -> current = current.getSouth();
-            case "west" -> current = current.getWest();
-        }
+    public void move(String direction) {
+        boolean loopDone = false;
+        do {
+            switch (direction) {
+                case "east" -> {
+                    current = current.getEast();
+                    loopDone = true;
+                }
+                case "north" -> {
+                    current = current.getNorth();
+                    loopDone = true;
+                }
+                case "south" -> {
+                    current = current.getSouth();
+                    loopDone = true;
+                }
+                case "west" -> {
+                    current = current.getWest();
+                    loopDone = true;
+                }
+                default -> System.out.println("Invalid input. Please write, north, south, east or west");
+            }
+        } while (!loopDone);
 
     }
 
