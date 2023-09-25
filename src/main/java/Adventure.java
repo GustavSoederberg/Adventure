@@ -62,8 +62,10 @@ public class Adventure {
     public void move(String direction){
 
         switch(direction){
-            east ->
-
+            case "east" -> current = current.getEast();
+            case "north" -> current = current.getNorth();
+            case "south" -> current = current.getSouth();
+            case "west" -> current = current.getWest();
         }
 
     }
