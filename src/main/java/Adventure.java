@@ -9,19 +9,19 @@ public class Adventure {
     private Room room7;
     private Room room8;
     private Room room9;
-    private Room current;
+    private Room currentRoom;
 
     public Adventure() {
-        room1 = new Room("Room 1", " ");
-        room2 = new Room("Room 2", " ");
-        room3 = new Room("Room 3", " ");
-        room4 = new Room("Room 4", " ");
-        room5 = new Room("Room 5", " ");
-        room6 = new Room("Room 6", " ");
-        room7 = new Room("Room 7", " ");
-        room8 = new Room("Room 8", " ");
-        room9 = new Room("Room 9", " ");
-        current = room1;
+        room1 = new Room("Room 1", "Room number 1");
+        room2 = new Room("Room 2", "Room number 2");
+        room3 = new Room("Room 3", "Room number 3");
+        room4 = new Room("Room 4", "Room number 4");
+        room5 = new Room("Room 5", "Room number 5");
+        room6 = new Room("Room 6", "Room number 6");
+        room7 = new Room("Room 7", "Room number 7");
+        room8 = new Room("Room 8", "Room number 8");
+        room9 = new Room("Room 9", "Room number 9");
+        currentRoom = room1;
     }
 
     public void setAllRooms() {
@@ -60,30 +60,31 @@ public class Adventure {
         room9.setNorth(room6);
     }
 
-    public void move(String direction) {
-        boolean loopDone = false;
-        do {
-            switch (direction) {
-                case "east" -> {
-                    current = current.getEast();
-                    loopDone = true;
-                }
-                case "north" -> {
-                    current = current.getNorth();
-                    loopDone = true;
-                }
-                case "south" -> {
-                    current = current.getSouth();
-                    loopDone = true;
-                }
-                case "west" -> {
-                    current = current.getWest();
-                    loopDone = true;
-                }
-                default -> System.out.println("Invalid input. Please write, north, south, east or west");
-            }
-        } while (!loopDone);
 
+
+    public void move(String direction) {
+        switch (direction) {
+            case "east" -> {
+                if (currentRoom.getEast() != null) { currentRoom = currentRoom.getEast();
+                    System.out.println("Moved " + direction); }
+            }
+            case "north" -> {
+                if (currentRoom.getNorth() != null) { currentRoom = currentRoom.getNorth();
+                    System.out.println("Moved " + direction); }
+            }
+            case "south" -> {
+                if (currentRoom.getSouth() != null) { currentRoom = currentRoom.getSouth();
+                    System.out.println("Moved " + direction); }
+            }
+            case "west" -> {
+                if (currentRoom.getWest() != null) { currentRoom = currentRoom.getWest();
+                    System.out.println("Moved " + direction); }
+            }
+        }
     }
 
+
+    public String look() {
+        return currentRoom.getDescription();
+    }
 }
