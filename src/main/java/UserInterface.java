@@ -9,7 +9,6 @@ public class UserInterface {
         String userChoice;
 
         while (true) {
-            System.out.println("Current room: " + adventure.getCurrentRoom());
             System.out.println("Awaiting your command:");
             userChoice = input.nextLine();
             switch (userChoice) {
@@ -18,7 +17,7 @@ public class UserInterface {
                 case "east" -> System.out.println(adventure.moveEast());
                 case "south" -> System.out.println(adventure.moveSouth());
                 case "look" -> System.out.println(adventure.look());
-                case "help" -> System.out.println("Printing help info");
+                case "help" -> System.out.println(adventure.help());
                 case "exit" -> System.exit(0);
                 default -> System.out.println("Please enter a valid command!");
             }

@@ -92,7 +92,8 @@ public class Adventure {
     public String moveNorth() {
         if (currentRoom.getNorth() != null) {
             currentRoom = currentRoom.getNorth();
-            return "Moved North";
+            return "Moved North \n" +
+                    currentRoom;
         }
         else {
             return "You can't go that way";
@@ -103,7 +104,8 @@ public class Adventure {
     public String moveSouth() {
         if (currentRoom.getSouth() != null) {
             currentRoom = currentRoom.getSouth();
-            return "Moved South";
+            return "Moved South \n" +
+                    currentRoom;
         }
         else {
             return "You can't go that way";
@@ -114,7 +116,8 @@ public class Adventure {
     public String moveEast() {
         if (currentRoom.getEast() != null) {
             currentRoom = currentRoom.getEast();
-            return "Moved East";
+            return "Moved East \n" +
+                    currentRoom;
         }
         else {
             return "You can't go that way";
@@ -124,7 +127,8 @@ public class Adventure {
     }public String moveWest() {
         if (currentRoom.getWest() != null) {
             currentRoom = currentRoom.getWest();
-            return "Moved West";
+            return "Moved West \n" +
+                    currentRoom;
         }
         else {
             return "You can't go that way";
@@ -134,6 +138,12 @@ public class Adventure {
     }
 
     public String look() {
-        return currentRoom.getDescription();
+        return "Looking around: \n" +
+        currentRoom.getName() + "\n" +
+                currentRoom.getDescription();
+    }
+
+    public String help() {
+        return "This is the help text";
     }
 }
