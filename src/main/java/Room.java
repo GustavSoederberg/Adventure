@@ -58,4 +58,10 @@ public class Room {
     public void setWest(Room west) {
         this.west = west;
     }
+
+    @Override
+    public String toString() {
+        return "Room name: " + name+
+                "description: " + description;
+    }
 }
