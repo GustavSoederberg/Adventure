@@ -9,6 +9,7 @@ public class UserInterface {
         String userChoice;
 
         while (true) {
+            System.out.println("Current room: " + adventure.getCurrentRoom());
             System.out.println("Awaiting your command:");
             userChoice = input.nextLine();
             switch (userChoice) {

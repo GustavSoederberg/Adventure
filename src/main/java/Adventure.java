@@ -9,7 +9,12 @@ public class Adventure {
     private Room room7;
     private Room room8;
     private Room room9;
+
     private Room currentRoom;
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 
     public Adventure() {
         room1 = new Room("Room 1", "Room number 1");
