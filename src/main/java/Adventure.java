@@ -92,6 +92,7 @@ public class Adventure {
     public String moveNorth() {
         if (currentRoom.getNorth() != null) {
             currentRoom = currentRoom.getNorth();
+            currentRoom.setVisited(true);
             return "Moved North \n" +
                     currentRoom;
         }
@@ -104,6 +105,7 @@ public class Adventure {
     public String moveSouth() {
         if (currentRoom.getSouth() != null) {
             currentRoom = currentRoom.getSouth();
+            currentRoom.setVisited(true);
             return "Moved South \n" +
                     currentRoom;
         }
@@ -116,6 +118,7 @@ public class Adventure {
     public String moveEast() {
         if (currentRoom.getEast() != null) {
             currentRoom = currentRoom.getEast();
+            currentRoom.setVisited(true);
             return "Moved East \n" +
                     currentRoom;
         }
@@ -127,6 +130,7 @@ public class Adventure {
     }public String moveWest() {
         if (currentRoom.getWest() != null) {
             currentRoom = currentRoom.getWest();
+            currentRoom.setVisited(true);
             return "Moved West \n" +
                     currentRoom;
         }
