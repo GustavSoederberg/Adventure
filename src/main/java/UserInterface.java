@@ -13,7 +13,10 @@ public class UserInterface {
             System.out.println("Awaiting your command:");
             userChoice = input.nextLine();
             switch (userChoice) {
-                case "north", "west", "east", "south" -> adventure.move(userChoice);
+                case "north" -> adventure.moveNorth();
+                case "west" -> adventure.moveWest();
+                case "east" -> adventure.moveEast();
+                case "south" -> adventure.moveSouth();
                 case "look" -> System.out.println(adventure.look());
                 case "help" -> System.out.println("Printing help info");
                 case "exit" -> System.exit(0);
