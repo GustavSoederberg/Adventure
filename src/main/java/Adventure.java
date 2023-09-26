@@ -63,88 +63,70 @@ public class Adventure {
         //Room 9
         room9.setEast(room8);
         room9.setNorth(room6);
+
+        currentRoom.setVisited(true);
     }
 
 
-
-    /*public void move(String direction) {
+    public boolean move(String direction) {
         switch (direction) {
             case "east" -> {
-                if (currentRoom.getEast() != null) { currentRoom = currentRoom.getEast();
-                    System.out.println("Moved " + direction); }
+                if (currentRoom.getEast() != null) {
+                    currentRoom = currentRoom.getEast();
+                    currentRoom.setVisited(true);
+                    return true;
+
+                } else {return false;}
+
             }
             case "north" -> {
-                if (currentRoom.getNorth() != null) { currentRoom = currentRoom.getNorth();
-                    System.out.println("Moved " + direction); }
+                if (currentRoom.getNorth() != null) {
+                    currentRoom = currentRoom.getNorth();
+                    currentRoom.setVisited(true);
+                    return true;
+
+                } else {return false;}
+
             }
             case "south" -> {
-                if (currentRoom.getSouth() != null) { currentRoom = currentRoom.getSouth();
-                    System.out.println("Moved " + direction); }
+                if (currentRoom.getSouth() != null) {
+                    currentRoom = currentRoom.getSouth();
+                    currentRoom.setVisited(true);
+                    return true;
+
+                } else {return false;}
             }
             case "west" -> {
-                if (currentRoom.getWest() != null) { currentRoom = currentRoom.getWest();
-                    System.out.println("Moved " + direction); }
+                if (currentRoom.getWest() != null) {
+                    currentRoom = currentRoom.getWest();
+                    currentRoom.setVisited(true);
+                    return true;
+
+                } else{return false;}
             }
         }
-    }*/
-
-
-    public String moveNorth() {
-        if (currentRoom.getNorth() != null) {
-            currentRoom = currentRoom.getNorth();
-            return "Moved North \n" +
-                    currentRoom;
-        }
-        else {
-            return "You can't go that way";
-
-        }
-
-    }
-    public String moveSouth() {
-        if (currentRoom.getSouth() != null) {
-            currentRoom = currentRoom.getSouth();
-            return "Moved South \n" +
-                    currentRoom;
-        }
-        else {
-            return "You can't go that way";
-
-        }
-
-    }
-    public String moveEast() {
-        if (currentRoom.getEast() != null) {
-            currentRoom = currentRoom.getEast();
-            return "Moved East \n" +
-                    currentRoom;
-        }
-        else {
-            return "You can't go that way";
-
-        }
-
-    }
-    public String moveWest() {
-        if (currentRoom.getWest() != null) {
-            currentRoom = currentRoom.getWest();
-            return "Moved West \n" +
-                    currentRoom;
-        }
-        else {
-            return "You can't go that way";
-
-        }
-
+        return false;
     }
 
     public String look() {
         return "Looking around: \n" +
-        currentRoom.getName() + "\n" +
+                currentRoom.getName() + "\n" +
                 currentRoom.getDescription();
     }
 
     public String help() {
-        return "This is the help text";
+        return """
+                You're in a spacestation. 
+                To move between rooms you have to write north, south, east and west. 
+                You can write look to get at name and description of the current room you're in.
+                To exit the game write exit.
+                """;
+    }
+
+    public void checkRoomsAroundIsVisited() {
+        if (currentRoom.getNorth() != null && !currentRoom.getNorth().isVisited()) {
+            System.out.println("North is not visited");
+        }
+
     }
 }
