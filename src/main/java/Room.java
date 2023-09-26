@@ -74,6 +74,7 @@ public class Room {
             return "Room name: " + name;
         }
         else {
+            this.isVisited = true;
             return "Room name: " + name +
                     "\nDescription: " + description;
         }
