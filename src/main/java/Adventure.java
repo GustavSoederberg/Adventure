@@ -44,6 +44,8 @@ public class Adventure {
         room4.setSouth(room7);
         room4.setNorth(room1);
         room4.setEast(room5);
+
+        room4.setLockedNorth(true);
         //Room 5
         room5.setNorth(room2);
         room5.setWest(room4);
@@ -61,7 +63,7 @@ public class Adventure {
         room8.setWest(room7);
         room8.setEast(room9);
         //Room 9
-        room9.setEast(room8);
+        room9.setWest(room8);
         room9.setNorth(room6);
 
         currentRoom.setVisited(true);
@@ -71,7 +73,7 @@ public class Adventure {
     public boolean move(String direction) {
         switch (direction) {
             case "east" -> {
-                if (currentRoom.getEast() != null) {
+                if (currentRoom.getEast() != null && !currentRoom.getEast().isLockedWest()) {
                     currentRoom = currentRoom.getEast();
                     return true;
 
@@ -79,7 +81,7 @@ public class Adventure {
 
             }
             case "north" -> {
-                if (currentRoom.getNorth() != null) {
+                if (currentRoom.getNorth() != null && !currentRoom.getNorth().isLockedSouth()) {
                     currentRoom = currentRoom.getNorth();
                     return true;
 
@@ -87,14 +89,14 @@ public class Adventure {
 
             }
             case "south" -> {
-                if (currentRoom.getSouth() != null) {
+                if (currentRoom.getSouth() != null && !currentRoom.getSouth().isLockedNorth()) {
                     currentRoom = currentRoom.getSouth();
                     return true;
 
                 } else {return false;}
             }
             case "west" -> {
-                if (currentRoom.getWest() != null) {
+                if (currentRoom.getWest() != null && !currentRoom.getWest().isLockedEast()) {
                     currentRoom = currentRoom.getWest();
                     return true;
 
@@ -123,6 +125,11 @@ public class Adventure {
         if (currentRoom.getNorth() != null && !currentRoom.getNorth().isVisited()) {
             System.out.println("North is not visited");
         }
+
+    }
+
+    public void unlock(){
+
 
     }
 }

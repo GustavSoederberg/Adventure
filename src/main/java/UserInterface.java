@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class UserInterface {
     private final Scanner input = new Scanner(System.in);
     private final Adventure adventure = new Adventure();
+
     public void start() {
         adventure.setAllRooms();
         System.out.println("Welcome to the adventure game!");
@@ -15,10 +16,9 @@ public class UserInterface {
                 case "north", "east", "west", "south" -> {
                     if (adventure.move(userChoice)) {
                         System.out.println("Moved " + userChoice + "\n" + adventure.getCurrentRoom());
-                        if(adventure.getCurrentRoom().isVisited()){
+                        if (adventure.getCurrentRoom().isVisited()) {
                             System.out.println("You've been here before");
-                        }
-                        else {
+                        } else {
                             adventure.getCurrentRoom().setVisited(true);
                         }
 

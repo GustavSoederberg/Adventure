@@ -7,10 +7,19 @@ public class Room {
     private Room west;
     private boolean isVisited;
 
+    private boolean isLockedNorth;
+    private boolean isLockedSouth;
+    private boolean isLockedWest;
+    private boolean isLockedEast;
+
     public Room(String name, String description){
         this.name = name;
         this.description = description;
         isVisited = false;
+        isLockedNorth = false;
+        isLockedSouth = false;
+        isLockedEast = false;
+        isLockedWest = false;
     }
 
     public String getName() {
@@ -41,6 +50,22 @@ public class Room {
         return isVisited;
     }
 
+    public boolean isLockedNorth() {
+        return isLockedNorth;
+    }
+
+    public boolean isLockedSouth() {
+        return isLockedSouth;
+    }
+
+    public boolean isLockedWest() {
+        return isLockedWest;
+    }
+
+    public boolean isLockedEast() {
+        return isLockedEast;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -67,6 +92,22 @@ public class Room {
 
     public void setVisited(boolean isVisited) {
         this.isVisited = isVisited;
+    }
+
+    public void setLockedNorth(boolean lockedNorth) {
+        isLockedNorth = lockedNorth;
+    }
+
+    public void setLockedSouth(boolean lockedSouth) {
+        isLockedSouth = lockedSouth;
+    }
+
+    public void setLockedWest(boolean lockedWest) {
+        isLockedWest = lockedWest;
+    }
+
+    public void setLockedEast(boolean lockedEast) {
+        isLockedEast = lockedEast;
     }
 
     @Override
