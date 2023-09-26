@@ -127,13 +127,12 @@ public class Adventure {
             return "Moved West";
         }
         else {
-            return "You can't go that way";
-
+            return "You cannot go that way";
         }
 
     }
 
     public String look() {
-        return currentRoom.getDescription();
+        return currentRoom.getName() + ": " + currentRoom.getDescription();
     }
 }
