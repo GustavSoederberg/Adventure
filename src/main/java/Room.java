@@ -5,6 +5,7 @@ public class Room {
     private Room south;
     private Room east;
     private Room west;
+    private boolean isVisited = false;
 
     public Room(String name, String description){
         this.name = name;
@@ -35,6 +36,10 @@ public class Room {
         return west;
     }
 
+    public boolean isVisited() {
+        return isVisited;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -59,9 +64,18 @@ public class Room {
         this.west = west;
     }
 
+    public void setVisited(boolean isVisited) {
+        this.isVisited = isVisited;
+    }
+
     @Override
     public String toString() {
-        return "Room name: " + name+
-                " description: " + description;
+        if (isVisited) {
+            return "Room name: " + name;
+        }
+        else {
+            return "Room name: " + name +
+                    "\nDescription: " + description;
+        }
     }
 }
