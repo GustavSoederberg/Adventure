@@ -5,11 +5,12 @@ public class Room {
     private Room south;
     private Room east;
     private Room west;
-    private boolean isVisited = false;
+    private boolean isVisited;
 
     public Room(String name, String description){
         this.name = name;
         this.description = description;
+        isVisited = false;
     }
 
     public String getName() {
@@ -74,7 +75,6 @@ public class Room {
             return "Room name: " + name;
         }
         else {
-            this.isVisited = true;
             return "Room name: " + name +
                     "\nDescription: " + description;
         }
