@@ -26,6 +26,10 @@ public class UserInterface {
                         System.out.println("You cannot go that way!");
                     }
                 }
+                case "xyzzy" -> {
+                    System.out.println("Teleporting to " + adventure.getXyzzyRoom());
+                    adventure.teleport();
+                }
                 case "look" -> System.out.println(adventure.look());
                 case "help" -> System.out.println(adventure.help());
                 case "exit" -> System.exit(0);

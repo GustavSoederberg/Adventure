@@ -9,11 +9,16 @@ public class Adventure {
     private Room room7;
     private Room room8;
     private Room room9;
-
     private Room currentRoom;
+
+    private Room xyzzyRoom;
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public Room getXyzzyRoom() {
+        return xyzzyRoom;
     }
 
     public Adventure() {
@@ -27,6 +32,7 @@ public class Adventure {
         room8 = new Room("Room 8", "Room number 8");
         room9 = new Room("Room 9", "Room number 9");
         currentRoom = room1;
+        xyzzyRoom = room1;
     }
 
     public void setAllRooms() {
@@ -125,7 +131,11 @@ public class Adventure {
         if (currentRoom.getNorth() != null && !currentRoom.getNorth().isVisited()) {
             System.out.println("North is not visited");
         }
-
+    }
+    public void teleport() {
+        Room newXyzzy = currentRoom;
+        currentRoom = xyzzyRoom;
+        xyzzyRoom = newXyzzy;
     }
 
     public void unlock(){
