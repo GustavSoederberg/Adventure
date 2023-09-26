@@ -67,7 +67,7 @@ public class Adventure {
 
 
 
-    public void move(String direction) {
+    /*public void move(String direction) {
         switch (direction) {
             case "east" -> {
                 if (currentRoom.getEast() != null) { currentRoom = currentRoom.getEast();
@@ -86,8 +86,52 @@ public class Adventure {
                     System.out.println("Moved " + direction); }
             }
         }
-    }
+    }*/
 
+
+    public String moveNorth() {
+        if (currentRoom.getNorth() != null) {
+            currentRoom = currentRoom.getNorth();
+            return "Moved North";
+        }
+        else {
+            return "You can't go that way";
+
+        }
+
+    }
+    public String moveSouth() {
+        if (currentRoom.getSouth() != null) {
+            currentRoom = currentRoom.getSouth();
+            return "Moved South";
+        }
+        else {
+            return "You can't go that way";
+
+        }
+
+    }
+    public String moveEast() {
+        if (currentRoom.getEast() != null) {
+            currentRoom = currentRoom.getEast();
+            return "Moved East";
+        }
+        else {
+            return "You can't go that way";
+
+        }
+
+    }public String moveWest() {
+        if (currentRoom.getWest() != null) {
+            currentRoom = currentRoom.getWest();
+            return "Moved West";
+        }
+        else {
+            return "You can't go that way";
+
+        }
+
+    }
 
     public String look() {
         return currentRoom.getDescription();
