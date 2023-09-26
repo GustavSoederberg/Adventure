@@ -73,7 +73,6 @@ public class Adventure {
             case "east" -> {
                 if (currentRoom.getEast() != null) {
                     currentRoom = currentRoom.getEast();
-                    currentRoom.setVisited(true);
                     return true;
 
                 } else {return false;}
@@ -82,7 +81,6 @@ public class Adventure {
             case "north" -> {
                 if (currentRoom.getNorth() != null) {
                     currentRoom = currentRoom.getNorth();
-                    currentRoom.setVisited(true);
                     return true;
 
                 } else {return false;}
@@ -91,7 +89,6 @@ public class Adventure {
             case "south" -> {
                 if (currentRoom.getSouth() != null) {
                     currentRoom = currentRoom.getSouth();
-                    currentRoom.setVisited(true);
                     return true;
 
                 } else {return false;}
@@ -99,7 +96,6 @@ public class Adventure {
             case "west" -> {
                 if (currentRoom.getWest() != null) {
                     currentRoom = currentRoom.getWest();
-                    currentRoom.setVisited(true);
                     return true;
 
                 } else{return false;}

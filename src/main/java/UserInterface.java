@@ -15,6 +15,12 @@ public class UserInterface {
                 case "north", "east", "west", "south" -> {
                     if (adventure.move(userChoice)) {
                         System.out.println("Moved " + userChoice);
+                        if(!adventure.getCurrentRoom().isVisited())
+                        adventure.getCurrentRoom().setVisited(true);
+                        else {
+                            System.out.println("You've been here before");
+                        }
+
                     } else {
                         System.out.println("You cannot go that way!");
                     }
