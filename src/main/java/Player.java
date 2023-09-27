@@ -1,0 +1,70 @@
+public class Player {
+    private Room currentRoom;
+    private Room xyzzyRoom;
+
+    public Player(Room currentRoom) {
+        this.currentRoom = currentRoom;
+        this.xyzzyRoom = currentRoom;
+    }
+
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+
+    public Room getXyzzyRoom() {
+        return xyzzyRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom){
+        this.currentRoom = currentRoom;
+
+    }
+    public void setXyzzyRoom(Room xyzzyRoom){
+        this.xyzzyRoom = xyzzyRoom;
+
+    }
+
+    public boolean move(String direction) {
+        switch (direction) {
+            case "east" -> {
+                if (currentRoom.getEast() != null && !currentRoom.getEast().isLockedWest()) {
+                    currentRoom = currentRoom.getEast();
+                    return true;
+
+                } else {return false;}
+
+            }
+            case "north" -> {
+                if (currentRoom.getNorth() != null && !currentRoom.getNorth().isLockedSouth()) {
+                    currentRoom = currentRoom.getNorth();
+                    return true;
+
+                } else {return false;}
+
+            }
+            case "south" -> {
+                if (currentRoom.getSouth() != null && !currentRoom.getSouth().isLockedNorth()) {
+                    currentRoom = currentRoom.getSouth();
+                    return true;
+
+                } else {return false;}
+            }
+            case "west" -> {
+                if (currentRoom.getWest() != null && !currentRoom.getWest().isLockedEast()) {
+                    currentRoom = currentRoom.getWest();
+                    return true;
+
+                } else{return false;}
+            }
+        }
+        return false;
+    }
+
+    public String look() {
+        return "Looking around: \n" +
+                currentRoom.getName() + "\n" +
+                currentRoom.getDescription();
+    }
+}
