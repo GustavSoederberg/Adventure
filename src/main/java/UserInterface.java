@@ -1,42 +1,45 @@
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner input;
-    private Adventure adventure;
+    private final Scanner input;
+    private final Adventure adventure;
 
     public UserInterface(Adventure adventure){
         this.adventure = adventure;
-       input = new Scanner(System.in);
+        input = new Scanner(System.in);
     }
 
     public void start() {
+        boolean gameIsRunning = true;
         System.out.println("Welcome to the adventure game!");
         String userChoice;
 
-        while (true) {
+        while (gameIsRunning) {
             System.out.println("Awaiting your command:");
             userChoice = input.nextLine();
             switch (userChoice) {
                 case "north", "east", "west", "south" -> {
-                    if (adventure.move(userChoice)) {
-                        System.out.println("Moved " + userChoice + "\n" + adventure.getCurrentRoom());
-                        if (adventure.getCurrentRoom().isVisited()) {
+                    if (adventure.getPlayer().move(userChoice)) {
+                        System.out.println("Moved " + userChoice + "\n" + adventure.getPlayer().getCurrentRoom());
+                        if (adventure.getPlayer().getCurrentRoom().isVisited()) {
                             System.out.println("You've been here before");
                         } else {
-                            adventure.getCurrentRoom().setVisited(true);
+                            adventure.getPlayer().getCurrentRoom().setVisited(true);
                         }
-
                     } else {
                         System.out.println("You cannot go that way!");
                     }
                 }
                 case "xyzzy" -> {
-                    System.out.println("Teleporting to " + adventure.getXyzzyRoom());
-                    adventure.teleport();
+                    System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
+                    adventure.getPlayer().teleport();
                 }
-                case "look" -> System.out.println(adventure.look());
+                case "look" -> System.out.println(adventure.getPlayer().look());
                 case "help" -> System.out.println(adventure.help());
-                case "exit" -> System.exit(0);
+                case "exit" -> {
+                    System.out.println("Bye!");
+                    gameIsRunning = false;
+                }
                 default -> System.out.println("Please enter a valid command!");
             }
         }

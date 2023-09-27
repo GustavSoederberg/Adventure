@@ -1,4 +1,6 @@
 public class Room {
+
+    //Attributes
     private String name;
     private String description;
     private Room north;
@@ -6,12 +8,12 @@ public class Room {
     private Room east;
     private Room west;
     private boolean isVisited;
-
     private boolean isLockedNorth;
     private boolean isLockedSouth;
     private boolean isLockedWest;
     private boolean isLockedEast;
 
+    //Constructor
     public Room(String name, String description){
         this.name = name;
         this.description = description;
@@ -22,6 +24,7 @@ public class Room {
         isLockedWest = false;
     }
 
+    //Getters
     public String getName() {
         return name;
     }
@@ -66,6 +69,7 @@ public class Room {
         return isLockedEast;
     }
 
+    //Setters
     public void setName(String name) {
         this.name = name;
     }
@@ -110,6 +114,8 @@ public class Room {
         isLockedEast = lockedEast;
     }
 
+
+    //ToString
     @Override
     public String toString() {
         if (isVisited) {

@@ -1,31 +1,36 @@
 public class Player {
+
+    //Attributes
     private Room currentRoom;
     private Room xyzzyRoom;
 
+    //Constructor
     public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
         this.xyzzyRoom = currentRoom;
     }
 
-
+    //Getters
     public Room getCurrentRoom() {
         return currentRoom;
     }
-
 
     public Room getXyzzyRoom() {
         return xyzzyRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom){
+    //Setters
+    public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
 
     }
-    public void setXyzzyRoom(Room xyzzyRoom){
+
+    public void setXyzzyRoom(Room xyzzyRoom) {
         this.xyzzyRoom = xyzzyRoom;
 
     }
 
+    //Methods
     public boolean move(String direction) {
         switch (direction) {
             case "east" -> {
@@ -33,7 +38,9 @@ public class Player {
                     currentRoom = currentRoom.getEast();
                     return true;
 
-                } else {return false;}
+                } else {
+                    return false;
+                }
 
             }
             case "north" -> {
@@ -41,7 +48,9 @@ public class Player {
                     currentRoom = currentRoom.getNorth();
                     return true;
 
-                } else {return false;}
+                } else {
+                    return false;
+                }
 
             }
             case "south" -> {
@@ -49,14 +58,18 @@ public class Player {
                     currentRoom = currentRoom.getSouth();
                     return true;
 
-                } else {return false;}
+                } else {
+                    return false;
+                }
             }
             case "west" -> {
                 if (currentRoom.getWest() != null && !currentRoom.getWest().isLockedEast()) {
                     currentRoom = currentRoom.getWest();
                     return true;
 
-                } else{return false;}
+                } else {
+                    return false;
+                }
             }
         }
         return false;
@@ -66,5 +79,11 @@ public class Player {
         return "Looking around: \n" +
                 currentRoom.getName() + "\n" +
                 currentRoom.getDescription();
+    }
+
+    public void teleport() {
+        Room newXyzzy = getCurrentRoom();
+        setCurrentRoom(getXyzzyRoom());
+        setXyzzyRoom(newXyzzy);
     }
 }
