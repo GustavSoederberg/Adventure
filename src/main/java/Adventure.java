@@ -1,15 +1,8 @@
 
 public class Adventure {
-    private Room room1;
-    private Room room2;
-    private Room room3;
-    private Room room4;
-    private Room room5;
-    private Room room6;
-    private Room room7;
-    private Room room8;
-    private Room room9;
-    private Room currentRoom;
+    private Map map = new Map();
+    private Player player;
+
 
 
     public Adventure() {
@@ -45,14 +38,14 @@ public class Adventure {
                 """;
     }
 
-    public void checkRoomsAroundIsVisited() {
-        if (currentRoom.getNorth() != null && !currentRoom.getNorth().isVisited()) {
+    /*public void checkRoomsAroundIsVisited() {
+        if (player.getCurrentRoom().getNorth() != null && !player.getCurrentRoom().getNorth().isVisited()) {
             System.out.println("North is not visited");
         }
-    }
+    }*/
     public void teleport() {
-        Room newXyzzy = currentRoom;
-        currentRoom = xyzzyRoom;
-        xyzzyRoom = newXyzzy;
+        Room newXyzzy = player.getCurrentRoom();
+        player.setCurrentRoom(player.getXyzzyRoom());
+        player.setXyzzyRoom(newXyzzy);
     }
 }

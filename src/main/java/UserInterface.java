@@ -1,11 +1,15 @@
 import java.util.Scanner;
 
 public class UserInterface {
-    private final Scanner input = new Scanner(System.in);
-    private final Adventure adventure = new Adventure();
+    private Scanner input;
+    private Adventure adventure;
+
+    public UserInterface(Adventure adventure){
+        this.adventure = adventure;
+       input = new Scanner(System.in);
+    }
 
     public void start() {
-        adventure.setAllRooms();
         System.out.println("Welcome to the adventure game!");
         String userChoice;
 
