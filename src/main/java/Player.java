@@ -91,13 +91,24 @@ public class Player {
         setXyzzyRoom(newXyzzy);
     }
 
-    public void take(Item item){
-        inventory.add(item);
-        getCurrentRoom().
+    public Item findItem(String searchItem){
+        Item itemResult;
+        for (Item i: getCurrentRoom().getRoomItems()) {
+            if (searchItem.equals(i.getName())){
+                itemResult = i;
+                return itemResult;
+            }
+            else return null;
+        }
     }
 
-    public void takeAllItems(ArrayList<Item> itemList){
-        inventory.addAll(itemList);
-        itemList = null;
+    public void take(Item item){
+        inventory.add(item);
+        getCurrentRoom().getRoomItems().remove(item);
+    }
+
+    public void takeAllItems(){
+        inventory.addAll(getCurrentRoom().getRoomItems());
+        getCurrentRoom().getRoomItems().clear();
     }
 }
