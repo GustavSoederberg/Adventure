@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Room {
 
     //Attributes
@@ -12,6 +14,7 @@ public class Room {
     private boolean isLockedSouth;
     private boolean isLockedWest;
     private boolean isLockedEast;
+    private ArrayList<Item> roomItems = new ArrayList<Item>()
 
     //Constructor
     public Room(String name, String description){

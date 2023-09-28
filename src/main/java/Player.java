@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Player {
 
     //Attributes
     private Room currentRoom;
     private Room xyzzyRoom;
+    private ArrayList<Item> inventory = new ArrayList<Item>();
 
     //Constructor
     public Player(Room currentRoom) {
