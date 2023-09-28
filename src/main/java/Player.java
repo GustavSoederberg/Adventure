@@ -7,7 +7,7 @@ public class Player {
     private Room xyzzyRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
 
-    private final int MAX_WEIGHT = 100;
+    private final int MAX_WEIGHT = 1;
     private int currentInventoryWeight;
 
     //Constructor
@@ -107,10 +107,10 @@ public class Player {
         setXyzzyRoom(newXyzzy);
     }
 
-    public Item findItem(String searchItem, ArrayList<Item> items){
+    public Item findItem(String searchItem, ArrayList<Item> items) {
         Item itemResult;
-        for (Item i: items) {
-            if (searchItem.equals(i.getName())){
+        for (Item i : items) {
+            if (searchItem.equals(i.getName())) {
                 itemResult = i;
                 return itemResult;
             }
@@ -118,33 +118,38 @@ public class Player {
         return null;
     }
 
-    public void take(Item item){
+    public void take(Item item) {
         inventory.add(item);
         getCurrentRoom().getRoomItems().remove(item);
     }
 
-    public void takeAllItems(ArrayList<Item> itemList){
-        inventory.addAll(itemList);
-        getCurrentRoom().getRoomItems().clear();
-    }
-
-    public void drop(Item item){
-        getCurrentRoom().getRoomItems().add(item);
-        inventory.remove(item);
-    }
-
-
-    public void dropAllItems() {
-        currentRoom.getRoomItems().addAll(inventory);
-        inventory.clear();
-    }
-
-    public int calculateInventoryWeight(){
-        int totalInventoryWeight = 0;
-        for (Item item : inventory) {
-            totalInventoryWeight += item.getWeight();
+    public boolean takeAllItems(ArrayList<Item> itemList) {
+        if (calculateWeight(itemList) < MAX_WEIGHT) {
+            inventory.addAll(itemList);
+            getCurrentRoom().getRoomItems().clear();
+            return true;
+        } else {
+            return false;
         }
-        currentInventoryWeight = totalInventoryWeight;
-        return currentInventoryWeight;
     }
-}
+
+        public void drop (Item item){
+            getCurrentRoom().getRoomItems().add(item);
+            inventory.remove(item);
+        }
+
+
+        public void dropAllItems () {
+            currentRoom.getRoomItems().addAll(inventory);
+            inventory.clear();
+        }
+
+        public int calculateWeight(ArrayList < Item > items) {
+            int totalWeight = 0;
+            for (Item item : items) {
+                totalWeight += item.getWeight();
+            }
+            return totalWeight;
+        }
+    }
+

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -34,6 +36,7 @@ public class UserInterface {
                     if (adventure.getRoomItems().isEmpty()){
                         System.out.println("No items to take");
                     }
+                    System.out.println("What do you want to take?");
                     String search = input.nextLine();
                     if (adventure.getPlayer().findItem(search, adventure.getRoomItems()) != null) {
                         System.out.println("Added: " + search);
@@ -46,9 +49,10 @@ public class UserInterface {
                 case "take all" -> {
                     if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
-                    } else {
+                    } else if (adventure.getPlayer().takeAllItems(adventure.getRoomItems())) {
                         System.out.println("Picked up: " + adventure.getRoomItems());
-                        adventure.getPlayer().takeAllItems(adventure.getRoomItems());
+                    } else {
+                        System.out.println("You cannot carry this");
                     }
                 }
                 case "drop" -> {
