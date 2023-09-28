@@ -126,11 +126,12 @@ public class Room {
     @Override
     public String toString() {
         if (isVisited) {
-            return "Room name: " + name;
+            return "Room name: " + name + "\nItems in room: " + roomItems;
         }
         else {
             return "Room name: " + name +
-                    "\nDescription: " + description;
+                    "\nDescription: " + description +
+                    "\nItems in room: " + roomItems;
         }
     }
 }

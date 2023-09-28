@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -63,6 +62,15 @@ public class UserInterface {
                     }
                     else {
                         System.out.println("No items found with that name");
+                    }
+                }
+
+                case "drop all" -> {
+                    if (adventure.getPlayer().getInventory().isEmpty()) {
+                        System.out.println("You have no items to drop!");
+                    } else {
+                        System.out.println("Dropped: " + adventure.getPlayer().getInventory());
+                        adventure.getPlayer().dropAllItems();
                     }
                 }
                 case "inventory" -> System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
