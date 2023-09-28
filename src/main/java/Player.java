@@ -13,6 +13,7 @@ public class Player {
         this.xyzzyRoom = currentRoom;
     }
 
+
     //Getters
     public Room getCurrentRoom() {
         return currentRoom;
@@ -88,5 +89,13 @@ public class Player {
         Room newXyzzy = getCurrentRoom();
         setCurrentRoom(getXyzzyRoom());
         setXyzzyRoom(newXyzzy);
+    }
+
+    public void take(Item item){
+        inventory.add(item);
+    }
+
+    public void takeAll(ArrayList<Item> itemList){
+        inventory.addAll(itemList);
     }
 }
