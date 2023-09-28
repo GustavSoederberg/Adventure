@@ -30,6 +30,15 @@ public class UserInterface {
                         System.out.println("You cannot go that way!");
                     }
                 }
+                case "take" -> {
+                    if (adventure.getRoomItems().isEmpty()) {
+                        System.out.println("No items to take");
+                    } else {
+                        System.out.println(adventure.getRoomItems());
+                        adventure.getPlayer().takeAllItems(adventure.getRoomItems());
+                        System.out.println(adventure.getRoomItems());
+                    }
+                }
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
                     adventure.getPlayer().teleport();

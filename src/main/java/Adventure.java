@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 
 public class Adventure {
-    private final Player player;
+    private Player player;
 
     //Constructor
     public Adventure() {
@@ -12,6 +13,10 @@ public class Adventure {
     //Getters
     public Player getPlayer() {
         return player;
+    }
+
+    public ArrayList<Item> getRoomItems() {
+        return player.getCurrentRoom().getRoomItems();
     }
 
     //Methods

@@ -93,7 +93,7 @@ public class Player {
 
     public void take(Item item){
         inventory.add(item);
-        getCurrentRoom().
+        //getCurrentRoom().
     }
 
     public void takeAllItems(ArrayList<Item> itemList){
