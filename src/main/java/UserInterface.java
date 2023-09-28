@@ -51,6 +51,15 @@ public class UserInterface {
                         adventure.getPlayer().takeAllItems(adventure.getRoomItems());
                     }
                 }
+
+                case "drop all" -> {
+                    if (adventure.getPlayer().getInventory().isEmpty()) {
+                        System.out.println("You have no items to drop!");
+                    } else {
+                        System.out.println("Dropped: " + adventure.getPlayer().getInventory());
+                        adventure.getPlayer().dropAllItems();
+                    }
+                }
                 case "inventory" -> System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());

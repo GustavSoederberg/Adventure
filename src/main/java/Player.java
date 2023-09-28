@@ -86,7 +86,8 @@ public class Player {
     public String look() {
         return "Looking around: \n" +
                 currentRoom.getName() + "\n" +
-                currentRoom.getDescription();
+                currentRoom.getDescription() +
+                "\nItems in room: " + currentRoom.getRoomItems();
     }
 
     public void teleport() {
@@ -115,5 +116,10 @@ public class Player {
     public void takeAllItems(ArrayList<Item> itemList){
         inventory.addAll(itemList);
         getCurrentRoom().getRoomItems().clear();
+    }
+
+    public void dropAllItems() {
+        currentRoom.getRoomItems().addAll(inventory);
+        inventory.clear();
     }
 }
