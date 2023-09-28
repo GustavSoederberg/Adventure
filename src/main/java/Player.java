@@ -7,6 +7,9 @@ public class Player {
     private Room xyzzyRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
 
+    private final int MAX_WEIGHT = 100;
+    private int currentInventoryWeight;
+
     //Constructor
     public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
@@ -25,6 +28,14 @@ public class Player {
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+
+    public int getMAX_WEIGHT() {
+        return MAX_WEIGHT;
+    }
+
+    public int getCurrentInventoryWeight() {
+        return currentInventoryWeight;
     }
 
     //Setters
@@ -103,7 +114,6 @@ public class Player {
                 itemResult = i;
                 return itemResult;
             }
-            else return null;
         }
         return null;
     }
@@ -127,5 +137,14 @@ public class Player {
     public void dropAllItems() {
         currentRoom.getRoomItems().addAll(inventory);
         inventory.clear();
+    }
+
+    public int calculateInventoryWeight(){
+        int totalInventoryWeight = 0;
+        for (Item item : inventory) {
+            totalInventoryWeight += item.getWeight();
+        }
+        currentInventoryWeight = totalInventoryWeight;
+        return currentInventoryWeight;
     }
 }

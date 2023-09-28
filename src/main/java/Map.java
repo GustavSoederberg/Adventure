@@ -7,8 +7,8 @@ public class Map {
 
     public void buildMap() {
         room1 = new Room("Room 1", "Room number 1");
-        room1.getRoomItems().add(new Item("Æble", "æble"));
-        room1.getRoomItems().add(new Item("Banan", "banan"));
+        room1.getRoomItems().add(new Item("Æble", "æble", 1));
+        room1.getRoomItems().add(new Item("Banan", "banan", 1));
         Room room2 = new Room("Room 2", "Room number 2");
         Room room3 = new Room("Room 3", "Room number 3");
         Room room4 = new Room("Room 4", "Room number 4");
