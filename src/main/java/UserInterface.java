@@ -39,9 +39,8 @@ public class UserInterface {
                     System.out.println("What do you want to take?");
                     String search = input.nextLine();
                     if (adventure.getPlayer().findItem(search, adventure.getRoomItems()) != null) {
-                        if (adventure.getPlayer().take(adventure.getPlayer().findItem(search , adventure.getRoomItems()))) {
+                        if (adventure.getPlayer().take(adventure.getPlayer().findItem(search, adventure.getRoomItems()))) {
                             System.out.println("Added: " + search);
-                            adventure.getPlayer().take(adventure.getPlayer().findItem(search, adventure.getRoomItems()));
                         }
                         else{
                             System.out.println("You can't carry more items. Please drop items to make space");
@@ -52,10 +51,11 @@ public class UserInterface {
 
                 }
                 case "take all" -> {
+                    ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
                     if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
                     } else if (adventure.getPlayer().takeAllItems(adventure.getRoomItems())) {
-                        System.out.println("Picked up: " + adventure.getRoomItems());
+                        System.out.println("Picked up: " + itemsToTake);
                     } else {
                         System.out.println("You cannot carry this");
                     }
@@ -82,7 +82,10 @@ public class UserInterface {
                         adventure.getPlayer().dropAllItems();
                     }
                 }
-                case "inventory" -> System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
+                case "inventory" -> {
+                    System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
+                    System.out.println("Current weight: " + adventure.getPlayer().calculateWeight(adventure.getPlayer().getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
+                }
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
                     adventure.getPlayer().teleport();

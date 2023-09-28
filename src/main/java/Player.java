@@ -119,8 +119,7 @@ public class Player {
     }
 
     public boolean take(Item item) {
-        if ((calculateWeight(inventory) + item.getWeight()) < MAX_WEIGHT)
-        {
+        if ((calculateWeight(inventory) + item.getWeight()) <= MAX_WEIGHT) {
             inventory.add(item);
             getCurrentRoom().getRoomItems().remove(item);
             return true;
@@ -129,7 +128,7 @@ public class Player {
     }
 
     public boolean takeAllItems(ArrayList<Item> itemList) {
-        if (calculateWeight(itemList) < MAX_WEIGHT) {
+        if (calculateWeight(itemList) <= MAX_WEIGHT) {
             inventory.addAll(itemList);
             getCurrentRoom().getRoomItems().clear();
             return true;
