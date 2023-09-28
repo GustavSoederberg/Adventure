@@ -93,9 +93,11 @@ public class Player {
 
     public void take(Item item){
         inventory.add(item);
+        getCurrentRoom().
     }
 
     public void takeAllItems(ArrayList<Item> itemList){
         inventory.addAll(itemList);
+        itemList = null;
     }
 }

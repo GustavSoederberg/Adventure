@@ -72,6 +72,10 @@ public class Room {
         return isLockedEast;
     }
 
+    public ArrayList<Item> getRoomItems() {
+        return roomItems;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
