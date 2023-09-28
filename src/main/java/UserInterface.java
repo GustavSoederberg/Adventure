@@ -35,8 +35,13 @@ public class UserInterface {
                         System.out.println("No items to take");
                     }
                     String search = input.nextLine();
-                    adventure.getPlayer().take(adventure.getPlayer().findItem(search));
-                    System.out.println(adventure.getPlayer().getInventory());
+                    if (adventure.getPlayer().findItem(search) != null) {
+                        System.out.println("Added: " + search);
+                        adventure.getPlayer().take(adventure.getPlayer().findItem(search));
+                    } else {
+                        System.out.println("No items found with that name");
+                    }
+
                 }
                 case "take all" -> {
                     if (adventure.getRoomItems().isEmpty()) {
