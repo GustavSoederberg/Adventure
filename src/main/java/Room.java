@@ -14,7 +14,7 @@ public class Room {
     private boolean isLockedSouth;
     private boolean isLockedWest;
     private boolean isLockedEast;
-    private ArrayList<Item> roomItems = new ArrayList<Item>()
+    private ArrayList<Item> roomItems = new ArrayList<Item>();
 
     //Constructor
     public Room(String name, String description){
