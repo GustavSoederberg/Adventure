@@ -110,6 +110,6 @@ public class Player {
 
     public void takeAllItems(ArrayList<Item> itemList){
         inventory.addAll(itemList);
-        itemList = null;
+        getCurrentRoom().getRoomItems().clear();
     }
 }
