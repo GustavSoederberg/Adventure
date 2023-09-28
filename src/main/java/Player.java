@@ -100,6 +100,7 @@ public class Player {
             }
             else return null;
         }
+        return null;
     }
 
     public void take(Item item){
