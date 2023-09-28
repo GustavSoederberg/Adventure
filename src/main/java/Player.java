@@ -23,6 +23,10 @@ public class Player {
         return xyzzyRoom;
     }
 
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
     //Setters
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;

@@ -34,11 +34,11 @@ public class UserInterface {
                     if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
                     } else {
-                        System.out.println(adventure.getRoomItems());
+                        System.out.println("Picked up: " + adventure.getRoomItems());
                         adventure.getPlayer().takeAllItems(adventure.getRoomItems());
-                        System.out.println(adventure.getRoomItems());
                     }
                 }
+                case "inventory" -> System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
                     adventure.getPlayer().teleport();
