@@ -91,9 +91,20 @@ public class Player {
         setXyzzyRoom(newXyzzy);
     }
 
+    public Item findItem(String searchItem){
+        Item itemResult;
+        for (Item i: getCurrentRoom().getRoomItems()) {
+            if (searchItem.equals(i.getName())){
+                itemResult = i;
+                return itemResult;
+            }
+            else return null;
+        }
+    }
+
     public void take(Item item){
         inventory.add(item);
-        //getCurrentRoom().
+        getCurrentRoom().getRoomItems().remove(item);
     }
 
     public void takeAllItems(ArrayList<Item> itemList){
