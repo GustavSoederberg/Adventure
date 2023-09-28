@@ -39,8 +39,13 @@ public class UserInterface {
                     System.out.println("What do you want to take?");
                     String search = input.nextLine();
                     if (adventure.getPlayer().findItem(search, adventure.getRoomItems()) != null) {
-                        System.out.println("Added: " + search);
-                        adventure.getPlayer().take(adventure.getPlayer().findItem(search , adventure.getRoomItems()));
+                        if (adventure.getPlayer().take(adventure.getPlayer().findItem(search , adventure.getRoomItems()))) {
+                            System.out.println("Added: " + search);
+                            adventure.getPlayer().take(adventure.getPlayer().findItem(search, adventure.getRoomItems()));
+                        }
+                        else{
+                            System.out.println("You can't carry more items. Please drop items to make space");
+                        }
                     } else {
                         System.out.println("No items found with that name");
                     }
