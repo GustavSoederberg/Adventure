@@ -95,7 +95,7 @@ public class Player {
         inventory.add(item);
     }
 
-    public void takeAll(ArrayList<Item> itemList){
+    public void takeAllItems(ArrayList<Item> itemList){
         inventory.addAll(itemList);
     }
 }
