@@ -84,10 +84,10 @@ public class UserInterface {
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.getInventory());
-                    System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
+                    System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
                 case "xyzzy" -> {
-                    System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
+                    System.out.println("Teleporting to " + adventure.getXyzzyRoom());
                     adventure.teleport();
                 }
                 case "look" -> System.out.println(adventure.getPlayer().look());
