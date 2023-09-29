@@ -1,61 +1,69 @@
 public class Map {
-    private Room room1;
+    private Room aalborg;
 
     public Room getRoom1() {
-        return room1;
+        return aalborg;
     }
 
     public void buildMap() {
-        room1 = new Room("Room 1", "Room number 1");
-        room1.addItem("Æble", "æble", 1);
-        room1.addItem("Banan", "banan", 1);
-        room1.addItem("Pære", "pære", 1);
-        Room room2 = new Room("Room 2", "Room number 2");
-        Room room3 = new Room("Room 3", "Room number 3");
-        Room room4 = new Room("Room 4", "Room number 4");
-        Room room5 = new Room("Room 5", "Room number 5");
-        Room room6 = new Room("Room 6", "Room number 6");
-        Room room7 = new Room("Room 7", "Room number 7");
-        Room room8 = new Room("Room 8", "Room number 8");
-        Room room9 = new Room("Room 9", "Room number 9");
+        aalborg = new Room("Aalborg", "Population: 120.000");
+        aalborg.addItem("Rød Aalborg", "Schapps", 2);
+
+        Room kerteminde = new Room("Kerteminde", "Population: 6.000");
+        kerteminde.addItem("Ice Cream", "A delicious ice cream", 1);
+
+        Room helsingør = new Room("Helsingør", "Population: 47.000");
+
+        Room randers = new Room("Randers", "Population: 62.000");
+        randers.addItem("Scooter", "An illegal, and likely stolen, scooter", 15);
+
+        Room odense = new Room("Odense", "Population: 500.000");
+        odense.addItem("Odense Pilsner", "Nice beer from Odense", 2);
+
+        Room copenhagen = new Room("Copenhagen", "Population: 1.300.000");
+        copenhagen.addItem("Coffee", "A black cup of coffee", 1);
+        copenhagen.addItem("Cigarette", "A blue kings cigarette", 1);
+
+        Room flensborg = new Room("Flensborg", "Population: 89.000");
+
+        Room svendborg = new Room("Svendborg", "Population: 87.000");
+
+        Room faxe = new Room("Faxe", "Population: 4.000");
+        faxe.addItem("Faxe Kondi", "A delicious soda", 2);
 
 
         //Room 1
-        room1.setEast(room2);
-        room1.setSouth(room4);
+        aalborg.setEast(kerteminde);
+        aalborg.setSouth(randers);
         //Room 2
-        room2.setWest(room1);
-        room2.setEast(room3);
-        room2.setSouth(room5);
+        kerteminde.setWest(aalborg);
+        kerteminde.setEast(helsingør);
+        kerteminde.setSouth(odense);
         //Room 3
-        room3.setWest(room2);
-        room3.setSouth(room6);
+        helsingør.setWest(kerteminde);
+        helsingør.setSouth(copenhagen);
         //Room 4
-        room4.setSouth(room7);
-        room4.setNorth(room1);
-        room4.setEast(room5);
-
-        room4.setLockedNorth(true);
+        randers.setSouth(flensborg);
+        randers.setNorth(aalborg);
+        randers.setEast(odense);
         //Room 5
-        room5.setNorth(room2);
-        room5.setWest(room4);
-        room5.setEast(room6);
-        room5.setSouth(room8);
+        odense.setNorth(kerteminde);
+        odense.setWest(randers);
+        odense.setEast(copenhagen);
+        odense.setSouth(svendborg);
         //Room 6
-        room6.setNorth(room3);
-        room6.setWest(room5);
-        room6.setSouth(room9);
+        copenhagen.setNorth(helsingør);
+        copenhagen.setWest(odense);
+        copenhagen.setSouth(faxe);
         //Room 7
-        room7.setNorth(room4);
-        room7.setEast(room8);
+        flensborg.setNorth(randers);
+        flensborg.setEast(svendborg);
         //Room 8
-        room8.setNorth(room5);
-        room8.setWest(room7);
-        room8.setEast(room9);
+        svendborg.setNorth(odense);
+        svendborg.setWest(flensborg);
+        svendborg.setEast(faxe);
         //Room 9
-        room9.setWest(room8);
-        room9.setNorth(room6);
+        faxe.setWest(svendborg);
+        faxe.setNorth(copenhagen);
     }
-
-
 }

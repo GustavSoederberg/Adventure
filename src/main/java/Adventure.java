@@ -29,9 +29,10 @@ public class Adventure {
 
     public String help() {
         return """
-                You're in a space station.
-                To move between rooms you have to write north, south, east and west.
-                You can write look to get at name and description of the current room you're in.
+                You're in Denmark.
+                To move between cities you have to write north, south, east and west.
+                You can write look to get at name and description of the current city you're in, as
+                well as any items that may be in that city.
                 To exit the game write exit.
                 """;
     }
