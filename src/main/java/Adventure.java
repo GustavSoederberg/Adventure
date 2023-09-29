@@ -34,4 +34,20 @@ public class Adventure {
             System.out.println("North is not visited");
         }
     }*/
+
+    public ArrayList<Item> getInventory(){
+        return player.getInventory();
+    }
+
+    public Item findItem(String searchItem, ArrayList<Item> items){
+        return player.findItem(searchItem, items);
+    }
+    public boolean take(Item item){
+        return player.take(item);
+
+    }
+
+    public boolean move(String direction){
+        return player.move(direction);
+    }
 }

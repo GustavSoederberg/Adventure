@@ -6,7 +6,7 @@ public class UserInterface {
     private final Scanner input;
     private final Adventure adventure;
 
-    public UserInterface(Adventure adventure){
+    public UserInterface(Adventure adventure) {
         this.adventure = adventure;
         input = new Scanner(System.in);
     }
@@ -21,7 +21,7 @@ public class UserInterface {
             userChoice = input.nextLine();
             switch (userChoice) {
                 case "north", "east", "west", "south" -> {
-                    if (adventure.getPlayer().move(userChoice)) {
+                    if (adventure.move(userChoice)) {
                         System.out.println("Moved " + userChoice + "\n" + adventure.getPlayer().getCurrentRoom());
                         if (adventure.getPlayer().getCurrentRoom().isVisited()) {
                             System.out.println("You've been here before");
@@ -33,16 +33,17 @@ public class UserInterface {
                     }
                 }
                 case "take" -> {
-                    if (adventure.getRoomItems().isEmpty()){
+                    if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
                     }
                     System.out.println("What do you want to take?");
                     String search = input.nextLine();
-                    if (adventure.getPlayer().findItem(search, adventure.getRoomItems()) != null) {
-                        if (adventure.getPlayer().take(adventure.getPlayer().findItem(search, adventure.getRoomItems()))) {
+                    if (adventure.findItem(search, adventure.getRoomItems()) != null) {
+                        Item searchItem;
+                        searchItem = adventure.findItem(search, adventure.getRoomItems());
+                        if (adventure.take(searchItem)) {
                             System.out.println("Added: " + search);
-                        }
-                        else{
+                        } else {
                             System.out.println("You can't carry more items. Please drop items to make space");
                         }
                     } else {
@@ -61,30 +62,29 @@ public class UserInterface {
                     }
                 }
                 case "drop" -> {
-                    if (adventure.getPlayer().getInventory().isEmpty()){
+                    if (adventure.getInventory().isEmpty()) {
                         System.out.println("No items to drop");
                     }
                     String search = input.nextLine();
-                    if(adventure.getPlayer().findItem(search, adventure.getPlayer().getInventory()) != null){
+                    if (adventure.findItem(search, adventure.getInventory()) != null) {
                         System.out.println("Dropped: " + search);
-                        adventure.getPlayer().drop(adventure.getPlayer().findItem(search, adventure.getPlayer().getInventory()));
-                    }
-                    else {
+                        adventure.getPlayer().drop(adventure.findItem(search, adventure.getInventory()));
+                    } else {
                         System.out.println("No items found with that name");
                     }
                 }
 
                 case "drop all" -> {
-                    if (adventure.getPlayer().getInventory().isEmpty()) {
+                    if (adventure.getInventory().isEmpty()) {
                         System.out.println("You have no items to drop!");
                     } else {
-                        System.out.println("Dropped: " + adventure.getPlayer().getInventory());
+                        System.out.println("Dropped: " + adventure.getInventory());
                         adventure.getPlayer().dropAllItems();
                     }
                 }
                 case "inventory" -> {
-                    System.out.println("Your inventory consists of: " + adventure.getPlayer().getInventory());
-                    System.out.println("Current weight: " + adventure.getPlayer().calculateWeight(adventure.getPlayer().getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
+                    System.out.println("Your inventory consists of: " + adventure.getInventory());
+                    System.out.println("Current weight: " + adventure.getPlayer().calculateWeight(adventure.getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
                 }
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
