@@ -94,10 +94,15 @@ public class Player {
     }
 
     public String look() {
-        return "Looking around: \n" +
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Looking around: \n" +
                 currentRoom.getName() + "\n" +
                 currentRoom.getDescription() +
-                "\nItems in room: " + currentRoom.getRoomItems();
+                "\nItems in city: ");
+        for (Item item : currentRoom.getRoomItems()) {
+            stringBuilder.append(item.getName() + ", ");
+        }
+        return stringBuilder.toString();
     }
 
     public void teleport() {
