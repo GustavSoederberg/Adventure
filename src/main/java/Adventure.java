@@ -37,11 +37,11 @@ public class Adventure {
         }
     }*/
 
-    public ArrayList<Item> getInventory(){
+    public ArrayList<Item> getInventory() {
         return player.getInventory();
     }
 
-    public Item findItem(String searchItem, ArrayList<Item> items){
+    public Item findItem(String searchItem, ArrayList<Item> items) {
         return player.findItem(searchItem, items);
     }
 
@@ -49,28 +49,36 @@ public class Adventure {
         return player.takeAllItems();
     }
 
-    public boolean take(Item item){
+    public boolean take(Item item) {
         return player.take(item);
 
     }
 
-    public boolean move(String direction){
+    public boolean move(String direction) {
         return player.move(direction);
     }
 
-    public Room getCurrentRoom(){
+    public Room getCurrentRoom() {
         return player.getCurrentRoom();
     }
 
-    public void teleport(){
+    public void teleport() {
         player.teleport();
     }
 
-    public void dropAllItems(){
+    public void dropAllItems() {
         player.dropAllItems();
     }
 
-    public int calculateWeight(ArrayList<Item> items){
+    public int calculateWeight(ArrayList<Item> items) {
         return player.calculateWeight(items);
+    }
+
+    public int getMAX_WEIGHT() {
+        return player.getMAX_WEIGHT();
+    }
+
+    public String look() {
+        return player.look();
     }
 }
