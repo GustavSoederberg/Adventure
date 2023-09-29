@@ -23,13 +23,8 @@ public class Adventure {
     public Room getXyzzyRoom() {
         return player.getXyzzyRoom();
     }
-    public int getMAX_WEIGHT() {
-        return player.getMAX_WEIGHT();
-    }
 
     //Methods
-
-
     public String help() {
         return """
                 You're in a space station.
@@ -89,4 +84,16 @@ public class Adventure {
     public String look() {
         return player.look();
     }
-}
+
+    public boolean inventoryIsEmpty() {
+        return player.inventoryIsEmpty();
+    }
+
+    public boolean roomIsEmpty() {
+        return player.roomIsEmpty();
+    }
+
+    public void drop(Item item) {
+        player.drop(item);
+        }
+    }

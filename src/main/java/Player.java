@@ -136,23 +136,38 @@ public class Player {
         }
     }
 
-        public void drop (Item item){
-            getCurrentRoom().getRoomItems().add(item);
-            inventory.remove(item);
+    public void drop(Item item) {
+        getCurrentRoom().getRoomItems().add(item);
+        inventory.remove(item);
+    }
+
+    public void dropAllItems() {
+        currentRoom.getRoomItems().addAll(inventory);
+        inventory.clear();
+    }
+
+    public int calculateWeight(ArrayList<Item> items) {
+        int totalWeight = 0;
+        for (Item item : items) {
+            totalWeight += item.getWeight();
         }
+        return totalWeight;
+    }
 
-
-        public void dropAllItems () {
-            currentRoom.getRoomItems().addAll(inventory);
-            inventory.clear();
-        }
-
-        public int calculateWeight(ArrayList < Item > items) {
-            int totalWeight = 0;
-            for (Item item : items) {
-                totalWeight += item.getWeight();
-            }
-            return totalWeight;
+    public boolean inventoryIsEmpty() {
+        if (inventory.size() < 1) {
+            return true;
+        } else {
+            return false;
         }
     }
+
+    public boolean roomIsEmpty() {
+        if (currentRoom.getRoomItems().size() < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
