@@ -107,13 +107,15 @@ public class Player {
     }
 
     public Item findItem(String searchItem, ArrayList<Item> items) {
-        Item itemResult;
-        for (Item i : items) {
-            if (searchItem.equalsIgnoreCase(i.getName())) {
-                itemResult = i;
-                return itemResult;
+        String searchLower = searchItem.toLowerCase();
+
+        for (Item item : items) {
+            String itemNameLower = item.getName().toLowerCase();
+            if (itemNameLower.contains(searchLower)) {
+                return item;
             }
         }
+
         return null;
     }
 

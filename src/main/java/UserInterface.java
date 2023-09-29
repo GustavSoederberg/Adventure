@@ -44,7 +44,7 @@ public class UserInterface {
                             Item searchItem;
                             searchItem = adventure.findItem(secondWord, adventure.getRoomItems());
                             if (adventure.take(searchItem)) {
-                                System.out.println("Added: " + secondWord);
+                                System.out.println("Added: " + searchItem.getName());
                             } else {
                                 System.out.println("You can't carry more items. Please drop items to make space");
                             }
@@ -66,7 +66,7 @@ public class UserInterface {
                     if (adventure.inventoryIsEmpty()) {
                         System.out.println("No items to drop");
                     }
-                    if (!secondWord.equals("all")) {
+                    else if (!secondWord.equals("all")) {
                         if (adventure.findItem(secondWord, adventure.getInventory()) != null) {
                             System.out.println("Dropped: " + secondWord);
                             adventure.drop(adventure.findItem(secondWord, adventure.getInventory()));
