@@ -68,7 +68,7 @@ public class UserInterface {
                     String search = input.nextLine();
                     if (adventure.findItem(search, adventure.getInventory()) != null) {
                         System.out.println("Dropped: " + search);
-                        adventure.getPlayer().drop(adventure.findItem(search, adventure.getInventory()));
+                        adventure.drop(adventure.findItem(search, adventure.getInventory()));
                     } else {
                         System.out.println("No items found with that name");
                     }

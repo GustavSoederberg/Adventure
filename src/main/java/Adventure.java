@@ -23,9 +23,6 @@ public class Adventure {
     public Room getXyzzyRoom() {
         return player.getXyzzyRoom();
     }
-    public int getMAX_WEIGHT() {
-        return player.getMAX_WEIGHT();
-    }
 
     //Methods
 
@@ -88,5 +85,9 @@ public class Adventure {
 
     public String look() {
         return player.look();
+    }
+
+    public void drop(Item item){
+        player.drop(item);
     }
 }
