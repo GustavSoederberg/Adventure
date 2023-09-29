@@ -50,4 +50,20 @@ public class Adventure {
     public boolean move(String direction){
         return player.move(direction);
     }
+
+    public Room getCurrentRoom(){
+        return player.getCurrentRoom();
+    }
+
+    public void teleport(){
+        player.teleport();
+    }
+
+    public void dropAllItems(){
+        player.dropAllItems();
+    }
+
+    public int calculateWeight(ArrayList<Item> items){
+        return player.calculateWeight(items);
+    }
 }

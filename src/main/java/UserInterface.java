@@ -22,11 +22,11 @@ public class UserInterface {
             switch (userChoice) {
                 case "north", "east", "west", "south" -> {
                     if (adventure.move(userChoice)) {
-                        System.out.println("Moved " + userChoice + "\n" + adventure.getPlayer().getCurrentRoom());
-                        if (adventure.getPlayer().getCurrentRoom().isVisited()) {
+                        System.out.println("Moved " + userChoice + "\n" + adventure.getCurrentRoom());
+                        if (adventure.getCurrentRoom().isVisited()) {
                             System.out.println("You've been here before");
                         } else {
-                            adventure.getPlayer().getCurrentRoom().setVisited(true);
+                            adventure.getCurrentRoom().setVisited(true);
                         }
                     } else {
                         System.out.println("You cannot go that way!");
@@ -79,16 +79,16 @@ public class UserInterface {
                         System.out.println("You have no items to drop!");
                     } else {
                         System.out.println("Dropped: " + adventure.getInventory());
-                        adventure.getPlayer().dropAllItems();
+                        adventure.dropAllItems();
                     }
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.getInventory());
-                    System.out.println("Current weight: " + adventure.getPlayer().calculateWeight(adventure.getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
+                    System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getPlayer().getMAX_WEIGHT());
                 }
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getPlayer().getXyzzyRoom());
-                    adventure.getPlayer().teleport();
+                    adventure.teleport();
                 }
                 case "look" -> System.out.println(adventure.getPlayer().look());
                 case "help" -> System.out.println(adventure.help());
