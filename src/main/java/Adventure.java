@@ -20,6 +20,8 @@ public class Adventure {
     }
 
     //Methods
+
+
     public String help() {
         return """
                 You're in a space station.
@@ -42,6 +44,11 @@ public class Adventure {
     public Item findItem(String searchItem, ArrayList<Item> items){
         return player.findItem(searchItem, items);
     }
+
+    public boolean takeAllItems() {
+        return player.takeAllItems();
+    }
+
     public boolean take(Item item){
         return player.take(item);
 

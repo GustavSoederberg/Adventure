@@ -55,7 +55,7 @@ public class UserInterface {
                     ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
                     if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
-                    } else if (adventure.getPlayer().takeAllItems(adventure.getRoomItems())) {
+                    } else if (adventure.takeAllItems()) {
                         System.out.println("Picked up: " + itemsToTake);
                     } else {
                         System.out.println("You cannot carry this");

@@ -6,8 +6,7 @@ public class Player {
     private Room currentRoom;
     private Room xyzzyRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
-
-    private final int MAX_WEIGHT = 2;
+    private final int MAX_WEIGHT = 5;
     private int currentInventoryWeight;
 
     //Constructor
@@ -127,9 +126,9 @@ public class Player {
         return false;
     }
 
-    public boolean takeAllItems(ArrayList<Item> itemList) {
-        if (calculateWeight(itemList) <= MAX_WEIGHT) {
-            inventory.addAll(itemList);
+    public boolean takeAllItems() {
+        if (calculateWeight(currentRoom.getRoomItems()) <= MAX_WEIGHT) {
+            inventory.addAll(currentRoom.getRoomItems());
             getCurrentRoom().getRoomItems().clear();
             return true;
         } else {
