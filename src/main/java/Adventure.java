@@ -11,12 +11,20 @@ public class Adventure {
     }
 
     //Getters
-    public Player getPlayer() {
+    /*public Player getPlayer() {
         return player;
     }
 
+     */
+
     public ArrayList<Item> getRoomItems() {
         return player.getCurrentRoom().getRoomItems();
+    }
+    public Room getXyzzyRoom() {
+        return player.getXyzzyRoom();
+    }
+    public int getMAX_WEIGHT() {
+        return player.getMAX_WEIGHT();
     }
 
     //Methods
