@@ -87,11 +87,6 @@ public class Adventure {
         return player.look();
     }
 
-    public void drop(Item item){
-        player.drop(item);
-    }
-}
-
     public boolean inventoryIsEmpty() {
         return player.inventoryIsEmpty();
     }
@@ -102,5 +97,5 @@ public class Adventure {
 
     public void drop(Item item) {
         player.drop(item);
-        }
     }
+}

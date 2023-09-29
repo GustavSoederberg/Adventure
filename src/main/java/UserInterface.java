@@ -53,7 +53,7 @@ public class UserInterface {
                         }
                     } else {
                         ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
-                        if (adventure.getRoomItems().isEmpty()) {
+                        if (adventure.roomIsEmpty()) {
                             System.out.println("No items to take");
                         } else if (adventure.takeAllItems()) {
                             System.out.println("Picked up: " + itemsToTake);
