@@ -25,6 +25,8 @@ public class Adventure {
     }
 
     //Methods
+
+
     public String help() {
         return """
                 You're in a space station.
@@ -84,6 +86,11 @@ public class Adventure {
     public String look() {
         return player.look();
     }
+
+    public void drop(Item item){
+        player.drop(item);
+    }
+}
 
     public boolean inventoryIsEmpty() {
         return player.inventoryIsEmpty();
