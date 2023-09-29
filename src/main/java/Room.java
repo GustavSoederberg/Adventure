@@ -76,6 +76,11 @@ public class Room {
         return roomItems;
     }
 
+    public void addItem(String name, String description, int weight){
+        Item item = new Item(name, description, weight);
+        roomItems.add(item);
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
