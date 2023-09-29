@@ -14,15 +14,19 @@ public class UserInterface {
     public void start() {
         boolean gameIsRunning = true;
         System.out.println("Welcome to the adventure game!");
-        String userChoice;
+
 
         while (gameIsRunning) {
             System.out.println("Awaiting your command:");
-            userChoice = input.nextLine();
-            switch (userChoice) {
-                case "north", "east", "west", "south" -> {
-                    if (adventure.move(userChoice)) {
-                        System.out.println("Moved " + userChoice + "\n" + adventure.getCurrentRoom());
+            String userChoice = input.nextLine();
+
+            String[] userInputs = userChoice.split(" ", 2);
+            String firstWord = userInputs[0];
+            String secondWord = userInputs.length > 1 ? userInputs[1] : "";
+            switch (firstWord) {
+                case "go" -> {
+                    if (adventure.move(secondWord)) {
+                        System.out.println("Moved " + secondWord + "\n" + adventure.getCurrentRoom());
                         if (adventure.getCurrentRoom().isVisited()) {
                             System.out.println("You've been here before");
                         } else {
@@ -36,50 +40,48 @@ public class UserInterface {
                     if (adventure.getRoomItems().isEmpty()) {
                         System.out.println("No items to take");
                     }
-                    System.out.println("What do you want to take?");
-                    String search = input.nextLine();
-                    if (adventure.findItem(search, adventure.getRoomItems()) != null) {
-                        Item searchItem;
-                        searchItem = adventure.findItem(search, adventure.getRoomItems());
-                        if (adventure.take(searchItem)) {
-                            System.out.println("Added: " + search);
+                    if (!secondWord.equals("all")) {
+                        if (adventure.findItem(secondWord, adventure.getRoomItems()) != null) {
+                            Item searchItem;
+                            searchItem = adventure.findItem(secondWord, adventure.getRoomItems());
+                            if (adventure.take(searchItem)) {
+                                System.out.println("Added: " + secondWord);
+                            } else {
+                                System.out.println("You can't carry more items. Please drop items to make space");
+                            }
                         } else {
-                            System.out.println("You can't carry more items. Please drop items to make space");
+                            System.out.println("No items found with that name");
                         }
                     } else {
-                        System.out.println("No items found with that name");
+                        ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
+                        if (adventure.getRoomItems().isEmpty()) {
+                            System.out.println("No items to take");
+                        } else if (adventure.takeAllItems()) {
+                            System.out.println("Picked up: " + itemsToTake);
+                        } else {
+                            System.out.println("You cannot carry this");
+                        }
                     }
 
-                }
-                case "take all" -> {
-                    ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
-                    if (adventure.getRoomItems().isEmpty()) {
-                        System.out.println("No items to take");
-                    } else if (adventure.takeAllItems()) {
-                        System.out.println("Picked up: " + itemsToTake);
-                    } else {
-                        System.out.println("You cannot carry this");
-                    }
                 }
                 case "drop" -> {
                     if (adventure.getInventory().isEmpty()) {
                         System.out.println("No items to drop");
                     }
-                    String search = input.nextLine();
-                    if (adventure.findItem(search, adventure.getInventory()) != null) {
-                        System.out.println("Dropped: " + search);
-                        adventure.drop(adventure.findItem(search, adventure.getInventory()));
+                    if (!secondWord.equals("all")) {
+                        if (adventure.findItem(secondWord, adventure.getInventory()) != null) {
+                            System.out.println("Dropped: " + secondWord);
+                            adventure.drop(adventure.findItem(secondWord, adventure.getInventory()));
+                        } else {
+                            System.out.println("No items found with that name");
+                        }
                     } else {
-                        System.out.println("No items found with that name");
-                    }
-                }
-
-                case "drop all" -> {
-                    if (adventure.getInventory().isEmpty()) {
-                        System.out.println("You have no items to drop!");
-                    } else {
-                        System.out.println("Dropped: " + adventure.getInventory());
-                        adventure.dropAllItems();
+                        if (adventure.getInventory().isEmpty()) {
+                            System.out.println("You have no items to drop!");
+                        } else {
+                            System.out.println("Dropped: " + adventure.getInventory());
+                            adventure.dropAllItems();
+                        }
                     }
                 }
                 case "inventory" -> {
