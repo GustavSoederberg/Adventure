@@ -114,7 +114,7 @@ public class Player {
     public Item findItem(String searchItem, ArrayList<Item> items) {
         Item itemResult;
         for (Item i : items) {
-            if (searchItem.equals(i.getName())) {
+            if (searchItem.equalsIgnoreCase(i.getName())) {
                 itemResult = i;
                 return itemResult;
             }
