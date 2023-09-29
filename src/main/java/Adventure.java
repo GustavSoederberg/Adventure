@@ -99,4 +99,8 @@ public class Adventure {
     public void drop(Item item) {
         player.drop(item);
     }
+
+    public String inventoryToString() {
+        return player.inventoryToString();
+    }
 }

@@ -174,5 +174,14 @@ public class Player {
             return false;
         }
     }
+
+    public String inventoryToString() {
+        StringBuilder stringbuilder = new StringBuilder();
+        for (Item item : inventory) {
+            stringbuilder.append(item.getName() + ", ");
+        }
+        return stringbuilder.toString();
+    }
+
 }
 

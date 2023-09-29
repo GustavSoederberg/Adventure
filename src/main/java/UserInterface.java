@@ -77,13 +77,13 @@ public class UserInterface {
                         if (adventure.getInventory().isEmpty()) {
                             System.out.println("You have no items to drop!");
                         } else {
-                            System.out.println("Dropped: " + adventure.getInventory());
+                            System.out.println("Dropped: " + adventure.inventoryToString());
                             adventure.dropAllItems();
                         }
                     }
                 }
                 case "inventory" -> {
-                    System.out.println("Your inventory consists of: " + adventure.getInventory());
+                    System.out.println("Your inventory consists of: " + adventure.inventoryToString());
                     System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
                 case "xyzzy" -> {
