@@ -139,6 +139,17 @@ public class Player {
         return false;
     }
 
+    public Adventure.returnMessage takeMethod(String searchItemName) {
+        Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
+        if (!roomIsEmpty()) {
+            if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
+                inventory.add(itemFound);
+                getCurrentRoom().getRoomItems().remove(itemFound);
+                return Adventure.returnMessage.OK;
+            } else return Adventure.returnMessage.CANT;
+        } else return Adventure.returnMessage.NOT_FOUND;
+    }
+
     public boolean takeAllItems() {
         if (calculateWeight(currentRoom.getRoomItems()) <= MAX_WEIGHT) {
             inventory.addAll(currentRoom.getRoomItems());
@@ -183,17 +194,15 @@ public class Player {
         }
     }
 
-    public Adventure.returnMessage eat(Item item){
-        if (item != null){
-            if (item instanceof Food){
-                health +=  ((Food) item).getHealthPoints();
+    public Adventure.returnMessage eat(Item item) {
+        if (item != null) {
+            if (item instanceof Food) {
+                health += ((Food) item).getHealthPoints();
                 inventory.remove(item);
                 return Adventure.returnMessage.OK;
-            }
-            else
+            } else
                 return Adventure.returnMessage.CANT;
-        }
-        else return Adventure.returnMessage.NOT_FOUND;
+        } else return Adventure.returnMessage.NOT_FOUND;
 
     }
 

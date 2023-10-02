@@ -20,7 +20,8 @@ public class Adventure {
     enum returnMessage{
         NOT_FOUND,
         CANT,
-        OK;
+        OK,
+        ROOM_EMPTY;
     }
 
     public returnMessage eat(Item item){
