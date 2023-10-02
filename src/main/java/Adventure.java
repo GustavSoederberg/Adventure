@@ -109,4 +109,8 @@ public class Adventure {
     public String inventoryToString() {
         return player.inventoryToString();
     }
+
+    public int getHealth() {
+        return player.getHealth();
+    }
 }
