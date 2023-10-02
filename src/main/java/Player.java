@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 
 public class Player {
 
@@ -140,15 +141,20 @@ public class Player {
     }
 
     public Adventure.returnMessage takeMethod(String searchItemName) {
-        Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
-        if (!roomIsEmpty()) {
-            if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
-                inventory.add(itemFound);
-                getCurrentRoom().getRoomItems().remove(itemFound);
+        if (!searchItemName.equalsIgnoreCase("all")) {
+            Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
+            if (!roomIsEmpty()) {
+                if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
+                    inventory.add(itemFound);
+                    getCurrentRoom().getRoomItems().remove(itemFound);
+                    return Adventure.returnMessage.OK;
+                } else return Adventure.returnMessage.CANT;
+            } else return Adventure.returnMessage.NOT_FOUND;
+        } else if(takeAllItems()){
                 return Adventure.returnMessage.OK;
-            } else return Adventure.returnMessage.CANT;
-        } else return Adventure.returnMessage.NOT_FOUND;
-    }
+            }
+        return Adventure.returnMessage.ROOM_EMPTY;
+        }
 
     public boolean takeAllItems() {
         if (calculateWeight(currentRoom.getRoomItems()) <= MAX_WEIGHT) {
