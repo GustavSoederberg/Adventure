@@ -23,6 +23,10 @@ public class Adventure {
         OK;
     }
 
+    public returnMessage eat(Item item){
+        return player.eat(item);
+    }
+
     public ArrayList<Item> getRoomItems() {
         return player.getCurrentRoom().getRoomItems();
     }

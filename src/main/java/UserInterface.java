@@ -90,6 +90,21 @@ public class UserInterface {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
                     adventure.teleport();
                 }
+                case "eat" -> {
+                        Item itemToEat;
+                        itemToEat = adventure.findItem(secondWord, adventure.getInventory());
+                        switch (adventure.eat(itemToEat)) {
+                            case NOT_FOUND -> {
+                                System.out.println("Item to eat not found");
+                            }
+                            case CANT -> {
+                                System.out.println("You can eat " + itemToEat);
+                            }
+                            case OK -> {
+                                System.out.println("You ate " + itemToEat);
+                            }
+                        }
+                }
                 case "look" -> System.out.println(adventure.look());
                 case "help" -> System.out.println(adventure.help());
                 case "exit" -> {
