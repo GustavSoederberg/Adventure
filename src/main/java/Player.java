@@ -130,7 +130,7 @@ public class Player {
         return null;
     }
 
-    public boolean take(Item item) {
+    /*public boolean take(Item item) {
         if ((calculateWeight(inventory) + item.getWeight()) <= MAX_WEIGHT) {
             inventory.add(item);
             getCurrentRoom().getRoomItems().remove(item);
@@ -139,7 +139,9 @@ public class Player {
         return false;
     }
 
-    public Adventure.returnMessage takeMethod(String searchItemName) {
+     */
+
+    public Adventure.returnMessage take(String searchItemName) {
         Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
         if (!roomIsEmpty()) {
             if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
@@ -147,7 +149,9 @@ public class Player {
                 getCurrentRoom().getRoomItems().remove(itemFound);
                 return Adventure.returnMessage.OK;
             } else return Adventure.returnMessage.CANT;
-        } else return Adventure.returnMessage.NOT_FOUND;
+        } else {
+            return Adventure.returnMessage.ROOM_EMPTY;
+        }
     }
 
     public boolean takeAllItems() {
