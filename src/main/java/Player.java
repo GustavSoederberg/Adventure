@@ -168,7 +168,7 @@ public class Player {
     }
 
     public boolean inventoryIsEmpty() {
-        if (inventory.size() < 1) {
+        if (inventory.isEmpty()) {
             return true;
         } else {
             return false;
@@ -176,11 +176,25 @@ public class Player {
     }
 
     public boolean roomIsEmpty() {
-        if (currentRoom.getRoomItems().size() < 1) {
+        if (currentRoom.getRoomItems().isEmpty()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public Adventure.returnMessage eat(Item item){
+        if (item != null){
+            if (item instanceof Food){
+                health +=  ((Food) item).getHealthPoints();
+                inventory.remove(item);
+                return Adventure.returnMessage.OK;
+            }
+            else
+                return Adventure.returnMessage.CANT;
+        }
+        else return Adventure.returnMessage.NOT_FOUND;
+
     }
 
     public String inventoryToString() {
