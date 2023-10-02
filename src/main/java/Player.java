@@ -37,6 +37,10 @@ public class Player {
         return currentInventoryWeight;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     //Setters
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
