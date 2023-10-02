@@ -9,6 +9,8 @@ public class Player {
     private final int MAX_WEIGHT = 5;
     private int currentInventoryWeight;
 
+    private int health = 100;
+
     //Constructor
     public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
