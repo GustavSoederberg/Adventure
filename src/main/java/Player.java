@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 
 public class Player {
 
@@ -131,7 +130,7 @@ public class Player {
         return null;
     }
 
-    public boolean take(Item item) {
+    /*public boolean take(Item item) {
         if ((calculateWeight(inventory) + item.getWeight()) <= MAX_WEIGHT) {
             inventory.add(item);
             getCurrentRoom().getRoomItems().remove(item);

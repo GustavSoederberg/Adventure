@@ -36,7 +36,27 @@ public class UserInterface {
                     }
                 }
                 case "take" -> {
-                    if (adventure.roomIsEmpty()) {
+                    if (!secondWord.equalsIgnoreCase("all")) {
+                        switch (adventure.take(secondWord)) {
+                            case OK -> System.out.println("Added: " + secondWord);
+                            case CANT -> System.out.println("You cannot carry this.");
+                            case NOT_FOUND -> System.out.println("No item found with that name.");
+                            case ROOM_EMPTY -> System.out.println("This room is empty");
+
+                        }
+                    } else {
+                        ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
+                        if (adventure.roomIsEmpty()) {
+                            System.out.println("No items to take");
+                        } else if (adventure.takeAllItems()) {
+                            System.out.println("Picked up: " + itemsToTake);
+                        } else {
+                            System.out.println("You cannot carry this");
+                        }
+                    }
+
+                }
+                    /*if (adventure.roomIsEmpty()) {
                         System.out.println("No items to take");
                     }
                     if (!secondWord.equals("all")) {
@@ -51,17 +71,8 @@ public class UserInterface {
                         } else {
                             System.out.println("No items found with that name");
                         }
-                    } else {
-                        ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
-                        if (adventure.roomIsEmpty()) {
-                            System.out.println("No items to take");
-                        } else if (adventure.takeAllItems()) {
-                            System.out.println("Picked up: " + itemsToTake);
-                        } else {
-                            System.out.println("You cannot carry this");
-                        }
-                    }
-                }
+                    } else
+                }*/
                 case "drop" -> {
                     if (adventure.inventoryIsEmpty()) {
                         System.out.println("No items to drop");
