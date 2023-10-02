@@ -7,10 +7,11 @@ public class Map {
 
     public void buildMap() {
         aalborg = new Room("Aalborg", "Population: 120.000");
-        aalborg.addItem("Rød Aalborg", "Schapps", 2);
+        aalborg.addFood("Rød Aalborg", "Schapps", 2, -99);
+
 
         Room kerteminde = new Room("Kerteminde", "Population: 6.000");
-        kerteminde.addItem("Ice Cream", "A delicious ice cream", 1);
+        kerteminde.addFood("Ice Cream", "A delicious ice cream", 1, 20);
 
         Room helsingør = new Room("Helsingør", "Population: 47.000");
 
@@ -18,18 +19,18 @@ public class Map {
         randers.addItem("Scooter", "An illegal, and likely stolen, scooter", 15);
 
         Room odense = new Room("Odense", "Population: 500.000");
-        odense.addItem("Odense Pilsner", "Nice beer from Odense", 2);
+        odense.addFood("Odense Pilsner", "Nice beer from Odense", 2, 30);
 
         Room copenhagen = new Room("Copenhagen", "Population: 1.300.000");
-        copenhagen.addItem("Coffee", "A black cup of coffee", 1);
-        copenhagen.addItem("Cigarette", "A blue kings cigarette", 1);
+        copenhagen.addFood("Coffee", "A black cup of coffee", 1, 5);
+        copenhagen.addFood("Cigarette", "A blue kings cigarette", 1, -10);
 
         Room flensborg = new Room("Flensborg", "Population: 89.000");
 
         Room svendborg = new Room("Svendborg", "Population: 87.000");
 
         Room faxe = new Room("Faxe", "Population: 4.000");
-        faxe.addItem("Faxe Kondi", "A delicious soda", 2);
+        faxe.addFood("Faxe Kondi", "A delicious soda", 2, 30);
 
 
         //Room 1

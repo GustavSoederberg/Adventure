@@ -17,7 +17,7 @@ public class Room {
     private ArrayList<Item> roomItems = new ArrayList<Item>();
 
     //Constructor
-    public Room(String name, String description){
+    public Room(String name, String description) {
         this.name = name;
         this.description = description;
         isVisited = false;
@@ -76,9 +76,15 @@ public class Room {
         return roomItems;
     }
 
-    public void addItem(String name, String description, int weight){
+    public void addItem(String name, String description, int weight) {
         Item item = new Item(name, description, weight);
         roomItems.add(item);
+    }
+
+    public void addFood(String name, String description, int weight, int healthPoints) {
+        Food food = new Food(name, description, weight, healthPoints);
+        roomItems.add(food);
+
     }
 
     //Setters
@@ -132,8 +138,7 @@ public class Room {
     public String toString() {
         if (isVisited) {
             return "Room name: " + name + "\nItems in room: " + roomItems;
-        }
-        else {
+        } else {
             return "Room name: " + name +
                     "\nDescription: " + description +
                     "\nItems in room: " + roomItems;
