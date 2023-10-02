@@ -106,6 +106,24 @@ public class UserInterface {
                         }
                 }
                 case "look" -> System.out.println(adventure.look());
+                case "health" -> {
+                    if (adventure.getHealth() >= 75) {
+                        System.out.println("Your health is: " + adventure.getHealth() +
+                                "\nYour health is all good.");
+                    }
+                    else if (adventure.getHealth() >= 50) {
+                        System.out.println("Your health is: " + adventure.getHealth() +
+                                "\nYour health is ok but not perfect.");
+                    }
+                    else if (adventure.getHealth() >= 25) {
+                        System.out.println("Your health is: " + adventure.getHealth() +
+                                "\nYour health is not very good.");
+                    }
+                    else {
+                        System.out.println("Your health is: " + adventure.getHealth() +
+                                "\nYou are close to death.");
+                    }
+                }
                 case "help" -> System.out.println(adventure.help());
                 case "exit" -> {
                     System.out.println("Bye!");
