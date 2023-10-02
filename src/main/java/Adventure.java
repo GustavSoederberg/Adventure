@@ -17,6 +17,12 @@ public class Adventure {
 
      */
 
+    enum returnMessage{
+        NOT_FOUND,
+        CANT,
+        OK;
+    }
+
     public ArrayList<Item> getRoomItems() {
         return player.getCurrentRoom().getRoomItems();
     }
