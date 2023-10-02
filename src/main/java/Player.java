@@ -137,22 +137,19 @@ public class Player {
             return true;
         }
         return false;
-    }
+    }*/
 
-    public Adventure.returnMessage takeMethod(String searchItemName) {
-        if (!searchItemName.equalsIgnoreCase("all")) {
-            Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
+    public Adventure.returnMessage take(String searchItemName) {
             if (!roomIsEmpty()) {
-                if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
-                    inventory.add(itemFound);
-                    getCurrentRoom().getRoomItems().remove(itemFound);
-                    return Adventure.returnMessage.OK;
-                } else return Adventure.returnMessage.CANT;
-            } else return Adventure.returnMessage.NOT_FOUND;
-        } else if(takeAllItems()){
-                return Adventure.returnMessage.OK;
-            }
-        return Adventure.returnMessage.ROOM_EMPTY;
+                Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
+                if (itemFound != null) {
+                    if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
+                        inventory.add(itemFound);
+                        getCurrentRoom().getRoomItems().remove(itemFound);
+                        return Adventure.returnMessage.OK;
+                    } else return Adventure.returnMessage.CANT;
+                }else return Adventure.returnMessage.NOT_FOUND;
+            } else return Adventure.returnMessage.ROOM_EMPTY;
         }
 
     public boolean takeAllItems() {

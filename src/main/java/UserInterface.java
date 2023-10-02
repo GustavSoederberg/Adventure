@@ -38,7 +38,7 @@ public class UserInterface {
                 case "take" -> {
                     if (!secondWord.equalsIgnoreCase("all")) {
                         switch (adventure.take(secondWord)) {
-                            case OK -> System.out.println("Added: " + secondWord);
+                            case OK -> System.out.println("Added: " + secondWord + " to inventory");
                             case CANT -> System.out.println("You cannot carry this.");
                             case NOT_FOUND -> System.out.println("No item found with that name.");
                             case ROOM_EMPTY -> System.out.println("This room is empty");
@@ -54,30 +54,11 @@ public class UserInterface {
                             System.out.println("You cannot carry this");
                         }
                     }
-
                 }
-                    /*if (adventure.roomIsEmpty()) {
-                        System.out.println("No items to take");
-                    }
-                    if (!secondWord.equals("all")) {
-                        if (adventure.findItem(secondWord, adventure.getRoomItems()) != null) {
-                            Item searchItem;
-                            searchItem = adventure.findItem(secondWord, adventure.getRoomItems());
-                            if (adventure.take(searchItem)) {
-                                System.out.println("Added: " + searchItem.getName());
-                            } else {
-                                System.out.println("You can't carry more items. Please drop items to make space");
-                            }
-                        } else {
-                            System.out.println("No items found with that name");
-                        }
-                    } else
-                }*/
                 case "drop" -> {
                     if (adventure.inventoryIsEmpty()) {
                         System.out.println("No items to drop");
-                    }
-                    else if (!secondWord.equals("all")) {
+                    } else if (!secondWord.equals("all")) {
                         if (adventure.findItem(secondWord, adventure.getInventory()) != null) {
                             System.out.println("Dropped: " + secondWord);
                             adventure.drop(adventure.findItem(secondWord, adventure.getInventory()));
@@ -102,35 +83,32 @@ public class UserInterface {
                     adventure.teleport();
                 }
                 case "eat" -> {
-                        Item itemToEat;
-                        itemToEat = adventure.findItem(secondWord, adventure.getInventory());
-                        switch (adventure.eat(itemToEat)) {
-                            case NOT_FOUND -> {
-                                System.out.println("Item to eat not found");
-                            }
-                            case CANT -> {
-                                System.out.println("You can eat " + itemToEat);
-                            }
-                            case OK -> {
-                                System.out.println("You ate " + itemToEat);
-                            }
+                    Item itemToEat;
+                    itemToEat = adventure.findItem(secondWord, adventure.getInventory());
+                    switch (adventure.eat(itemToEat)) {
+                        case NOT_FOUND -> {
+                            System.out.println("Item to eat not found");
                         }
+                        case CANT -> {
+                            System.out.println("You can eat " + itemToEat);
+                        }
+                        case OK -> {
+                            System.out.println("You ate " + itemToEat);
+                        }
+                    }
                 }
                 case "look" -> System.out.println(adventure.look());
                 case "health" -> {
                     if (adventure.getHealth() >= 75) {
                         System.out.println("Your health is: " + adventure.getHealth() +
                                 "\nYour health is all good.");
-                    }
-                    else if (adventure.getHealth() >= 50) {
+                    } else if (adventure.getHealth() >= 50) {
                         System.out.println("Your health is: " + adventure.getHealth() +
                                 "\nYour health is ok but not perfect.");
-                    }
-                    else if (adventure.getHealth() >= 25) {
+                    } else if (adventure.getHealth() >= 25) {
                         System.out.println("Your health is: " + adventure.getHealth() +
                                 "\nYour health is not very good.");
-                    }
-                    else {
+                    } else {
                         System.out.println("Your health is: " + adventure.getHealth() +
                                 "\nYou are close to death.");
                     }
