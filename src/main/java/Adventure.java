@@ -22,7 +22,7 @@ public class Adventure {
         CANT,
         OK,
         ROOM_EMPTY,
-        POSION;
+        POISON;
     }
 
     public returnMessage eat(Item item){
