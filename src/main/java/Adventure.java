@@ -21,7 +21,8 @@ public class Adventure {
         NOT_FOUND,
         CANT,
         OK,
-        ROOM_EMPTY;
+        ROOM_EMPTY,
+        POSION;
     }
 
     public returnMessage eat(Item item){

@@ -85,7 +85,7 @@ public class UserInterface {
                 case "eat" -> {
                     Item itemToEat;
                     itemToEat = adventure.findItem(secondWord, adventure.getInventory());
-                    switch (adventure.eat(itemToEat)) {
+                    switch (adventure.tryToEat(itemToEat)) {
                         case NOT_FOUND -> {
                             System.out.println("Item to eat not found");
                         }
@@ -94,6 +94,13 @@ public class UserInterface {
                         }
                         case OK -> {
                             System.out.println("You ate " + itemToEat);
+                        }
+                        case POISON -> {
+                            System.out.println("This does not look healthy, are you sure you want to eat it?: (y/n)");
+                            if (input.nextLine() == "y") {
+                                adventure.eat(itemToEat);
+                                System.out.println("You ate " + itemToEat);
+                            }
                         }
                     }
                 }
