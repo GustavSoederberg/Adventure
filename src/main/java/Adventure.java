@@ -15,6 +15,7 @@ public class Adventure {
         CANT,
         OK,
         ROOM_EMPTY,
+        INVENTORY_EMPTY,
         POISON;
     }
 
@@ -33,9 +34,11 @@ public class Adventure {
     public Room getXyzzyRoom() {
         return player.getXyzzyRoom();
     }
+    public returnMessage drop(String searchItem){
+        return player.drop(searchItem);
+    }
 
     //Methods
-
 
     public String help() {
         return """
@@ -113,10 +116,6 @@ public class Adventure {
 
     public boolean roomIsEmpty() {
         return player.roomIsEmpty();
-    }
-
-    public void drop(Item item) {
-        player.drop(item);
     }
 
     public String inventoryToString() {
