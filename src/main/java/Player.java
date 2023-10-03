@@ -148,6 +148,7 @@ public class Player {
             if (itemFound != null) {
                 if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
                     inventory.add(itemFound);
+                    currentInventoryWeight = calculateWeight(inventory);
                     getCurrentRoom().getRoomItems().remove(itemFound);
                     return Adventure.returnMessage.OK;
                 } else return Adventure.returnMessage.CANT;
