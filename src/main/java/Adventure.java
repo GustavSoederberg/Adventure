@@ -10,13 +10,6 @@ public class Adventure {
         player = new Player(map.getRoom1());
     }
 
-    //Getters
-    /*public Player getPlayer() {
-        return player;
-    }
-
-     */
-
     enum returnMessage{
         NOT_FOUND,
         CANT,
@@ -43,9 +36,18 @@ public class Adventure {
     public String help() {
         return """
                 You're in Denmark.
+                
                 To move between cities you have to write north, south, east and west.
+                
                 You can write look to get at name and description of the current city you're in, as
                 well as any items that may be in that city.
+                
+                To pick up items use the 'take' command followed by an item name or 'all' to pick up all items.
+                
+                To drop items use the 'drop' command followed by an item name or 'all' to drop all items.
+                
+                To eat or drink items use the 'eat' command followed by the item you want to consume.
+                
                 To exit the game write exit.
                 """;
     }
@@ -119,5 +121,9 @@ public class Adventure {
 
     public int getHealth() {
         return player.getHealth();
+    }
+
+    public Item getLastItemAdded() {
+        return player.getLastItemAdded();
     }
 }

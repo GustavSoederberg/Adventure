@@ -38,7 +38,7 @@ public class UserInterface {
                 case "take" -> {
                     if (!secondWord.equalsIgnoreCase("all")) {
                         switch (adventure.take(secondWord)) {
-                            case OK -> System.out.println("Added: " + secondWord + " to inventory");
+                            case OK -> System.out.println("Added: " + adventure.getLastItemAdded().getName() + " to inventory");
                             case CANT -> System.out.println("You cannot carry this.");
                             case NOT_FOUND -> System.out.println("No item found with that name.");
                             case ROOM_EMPTY -> System.out.println("This room is empty");
@@ -49,7 +49,11 @@ public class UserInterface {
                         if (adventure.roomIsEmpty()) {
                             System.out.println("No items to take");
                         } else if (adventure.takeAllItems()) {
-                            System.out.println("Picked up: " + itemsToTake);
+                            StringBuilder stringBuilder = new StringBuilder();
+                            for (Item item : itemsToTake) {
+                                stringBuilder.append(item.getName() + ", ");
+                            }
+                            System.out.println("Picked up: " + stringBuilder.toString());
                         } else {
                             System.out.println("You cannot carry this");
                         }
@@ -97,7 +101,7 @@ public class UserInterface {
                         }
                         case POISON -> {
                             System.out.println("This does not look healthy, are you sure you want to eat it?: (y/n)");
-                            if (input.nextLine() == "y") {
+                            if (input.nextLine().equalsIgnoreCase("y")) {
                                 adventure.eat(itemToEat);
                                 System.out.println("You ate " + itemToEat);
                             }
