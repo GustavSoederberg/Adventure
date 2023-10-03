@@ -231,5 +231,8 @@ public class Player {
         return stringbuilder.toString();
     }
 
+    public Item getLastItemAdded() {
+        return inventory.get(inventory.size() - 1);
+    }
 }
 
