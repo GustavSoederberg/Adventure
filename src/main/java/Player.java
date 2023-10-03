@@ -119,6 +119,9 @@ public class Player {
 
     public Item findItem(String searchItem, ArrayList<Item> items) {
         String searchLower = searchItem.toLowerCase();
+        if (searchItem == "" || searchItem == " ") {
+            return null;
+        }
 
         for (Item item : items) {
             String itemNameLower = item.getName().toLowerCase();
