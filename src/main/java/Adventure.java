@@ -17,7 +17,7 @@ public class Adventure {
 
      */
 
-    enum returnMessage{
+    enum returnMessage {
         NOT_FOUND,
         CANT,
         OK,
@@ -25,14 +25,18 @@ public class Adventure {
         POISON;
     }
 
-    public returnMessage eat(Item item){
+    public returnMessage eat(Item item) {
         return player.eat(item);
     }
-    public returnMessage tryToEat(Item item){return player.tryToEat(item);}
+
+    public returnMessage tryToEat(Item item) {
+        return player.tryToEat(item);
+    }
 
     public ArrayList<Item> getRoomItems() {
         return player.getCurrentRoom().getRoomItems();
     }
+
     public Room getXyzzyRoom() {
         return player.getXyzzyRoom();
     }
