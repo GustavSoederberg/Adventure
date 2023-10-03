@@ -210,7 +210,7 @@ public class Player {
     public Adventure.returnMessage tryToEat(Item item) {
         if (item != null) {
             if (item instanceof Food) {
-                if (!(((Food) item).getHealthPoints() < 0)) {
+                if ((((Food) item).getHealthPoints() > 0)) {
                     health += ((Food) item).getHealthPoints();
                     inventory.remove(item);
                     return Adventure.returnMessage.OK;

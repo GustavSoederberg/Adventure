@@ -101,9 +101,20 @@ public class UserInterface {
                         }
                         case POISON -> {
                             System.out.println("This does not look healthy, are you sure you want to eat it?: (y/n)");
-                            if (input.nextLine().equalsIgnoreCase("y")) {
-                                adventure.eat(itemToEat);
-                                System.out.println("You ate " + itemToEat);
+                            boolean isRunning = true;
+                            while (isRunning) {
+                                String choice = input.nextLine();
+                                if (choice.equalsIgnoreCase("y")) {
+                                    adventure.eat(itemToEat);
+                                    System.out.println("You ate " + itemToEat);
+                                    isRunning = false;
+
+                                } else if (choice.equalsIgnoreCase("n")) {
+                                    System.out.println("You put the food back in your inventory");
+                                    isRunning = false;
+                                } else {
+                                    System.out.println("Unknown input, please write y to eat or n to put the food back in inventory");
+                                }
                             }
                         }
                     }
