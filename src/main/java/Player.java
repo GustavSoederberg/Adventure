@@ -148,6 +148,7 @@ public class Player {
             if (itemFound != null) {
                 if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
                     inventory.add(itemFound);
+                    currentInventoryWeight = calculateWeight(inventory);
                     getCurrentRoom().getRoomItems().remove(itemFound);
                     return Adventure.returnMessage.OK;
                 } else return Adventure.returnMessage.CANT;
@@ -168,9 +169,18 @@ public class Player {
         }
     }
 
-    public void drop(Item item) {
-        getCurrentRoom().getRoomItems().add(item);
-        inventory.remove(item);
+
+    public Adventure.returnMessage drop(String searchItem) {
+        if (!inventoryIsEmpty()) {
+            Item itemFound = findItem(searchItem,inventory);
+            if (itemFound != null) {
+                getCurrentRoom().getRoomItems().add(itemFound);
+                inventory.remove(itemFound);
+                return Adventure.returnMessage.OK;
+            }
+            else return Adventure.returnMessage.NOT_FOUND;
+        }
+        else return Adventure.returnMessage.INVENTORY_EMPTY;
     }
 
     public void dropAllItems() {

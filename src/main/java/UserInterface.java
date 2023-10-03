@@ -60,23 +60,16 @@ public class UserInterface {
                     }
                 }
                 case "drop" -> {
-                    if (adventure.inventoryIsEmpty()) {
-                        System.out.println("No items to drop");
-                    } else if (!secondWord.equals("all")) {
-                        if (adventure.findItem(secondWord, adventure.getInventory()) != null) {
-                            System.out.println("Dropped: " + secondWord);
-                            adventure.drop(adventure.findItem(secondWord, adventure.getInventory()));
-                        } else {
-                            System.out.println("No items found with that name");
-                        }
-                    } else {
-                        if (adventure.getInventory().isEmpty()) {
-                            System.out.println("You have no items to drop!");
-                        } else {
-                            System.out.println("Dropped: " + adventure.inventoryToString());
-                            adventure.dropAllItems();
+                    if (!secondWord.equalsIgnoreCase("all")){
+                        switch (adventure.drop(secondWord)){
+                            case OK -> System.out.println("Dropped: " + secondWord);
+                            case NOT_FOUND -> System.out.println("No items found with that name");
+                            case INVENTORY_EMPTY -> System.out.println("You have no items to drop");
                         }
                     }
+                    else {
+                        System.out.println("Dropped: " + adventure.inventoryToString());
+                    adventure.dropAllItems();}
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
