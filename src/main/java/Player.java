@@ -210,16 +210,16 @@ public class Player {
     public Adventure.returnMessage tryToEat(Item item) {
         if (item != null) {
             if (item instanceof Food) {
-                if (!(((Food)item).getHealthPoints()<0))
-                health += ((Food) item).getHealthPoints();
-                inventory.remove(item);
-                return Adventure.returnMessage.OK;
-            } else if (((Food) item).getHealthPoints() < 0) {
-                return Adventure.returnMessage.POISON;
+                if (!(((Food) item).getHealthPoints() < 0)) {
+                    health += ((Food) item).getHealthPoints();
+                    inventory.remove(item);
+                    return Adventure.returnMessage.OK;
+                } else {
+                    return Adventure.returnMessage.POISON;
+                }
             } else
                 return Adventure.returnMessage.CANT;
         } else return Adventure.returnMessage.NOT_FOUND;
-
     }
 
     public String inventoryToString() {

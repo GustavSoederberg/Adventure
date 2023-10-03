@@ -28,6 +28,7 @@ public class Adventure {
     public returnMessage eat(Item item){
         return player.eat(item);
     }
+    public returnMessage tryToEat(Item item){return player.tryToEat(item);}
 
     public ArrayList<Item> getRoomItems() {
         return player.getCurrentRoom().getRoomItems();
