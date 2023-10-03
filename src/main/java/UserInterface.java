@@ -46,16 +46,16 @@ public class UserInterface {
                         }
                     } else {
                         ArrayList<Item> itemsToTake = new ArrayList<>(adventure.getRoomItems());
-                        if (adventure.roomIsEmpty()) {
-                            System.out.println("No items to take");
-                        } else if (adventure.takeAllItems()) {
-                            StringBuilder stringBuilder = new StringBuilder();
-                            for (Item item : itemsToTake) {
-                                stringBuilder.append(item.getName() + ", ");
+                        switch (adventure.takeAllItems()) {
+                            case OK -> {
+                                StringBuilder stringBuilder = new StringBuilder();
+                                for (Item item : itemsToTake) {
+                                    stringBuilder.append(item.getName() + ", ");
+                                }
+                                System.out.println("Picked up: " + stringBuilder.toString());
                             }
-                            System.out.println("Picked up: " + stringBuilder.toString());
-                        } else {
-                            System.out.println("You cannot carry this");
+                            case CANT -> System.out.println("You cannot carry this");
+                            case ROOM_EMPTY -> System.out.println("No items to take");
                         }
                     }
                 }

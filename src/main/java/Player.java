@@ -155,13 +155,16 @@ public class Player {
         } else return Adventure.returnMessage.ROOM_EMPTY;
     }
 
-    public boolean takeAllItems() {
-        if (calculateWeight(currentRoom.getRoomItems()) <= MAX_WEIGHT) {
+    public Adventure.returnMessage takeAllItems() {
+        if (roomIsEmpty()) {
+            return Adventure.returnMessage.ROOM_EMPTY;
+        } else if (calculateWeight(currentRoom.getRoomItems()) + currentInventoryWeight <= MAX_WEIGHT) {
             inventory.addAll(currentRoom.getRoomItems());
+            currentInventoryWeight = calculateWeight(inventory);
             getCurrentRoom().getRoomItems().clear();
-            return true;
+            return Adventure.returnMessage.OK;
         } else {
-            return false;
+            return Adventure.returnMessage.CANT;
         }
     }
 

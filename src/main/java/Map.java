@@ -7,11 +7,11 @@ public class Map {
 
     public void buildMap() {
         aalborg = new Room("Aalborg", "Population: 120.000");
-        aalborg.addFood("Rød Aalborg", "Schapps", 2, -99);
+        aalborg.addFood("Rød Aalborg", "Schapps", 4, -99);
 
 
         Room kerteminde = new Room("Kerteminde", "Population: 6.000");
-        kerteminde.addFood("Ice Cream", "A delicious ice cream", 1, 20);
+        kerteminde.addFood("Ice Cream", "A delicious ice cream", 2, 20);
 
         Room helsingør = new Room("Helsingør", "Population: 47.000");
 

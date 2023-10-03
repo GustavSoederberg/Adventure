@@ -70,7 +70,7 @@ public class Adventure {
         return player.findItem(searchItem, items);
     }
 
-    public boolean takeAllItems() {
+    public returnMessage takeAllItems() {
         return player.takeAllItems();
     }
 
