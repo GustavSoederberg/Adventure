@@ -77,13 +77,11 @@ public class Room {
     }
 
     public void addItem(String name, String description, int weight) {
-        Item item = new Item(name, description, weight);
-        roomItems.add(item);
+        roomItems.add(new Item(name, description, weight));
     }
 
     public void addFood(String name, String description, int weight, int healthPoints) {
-        Food food = new Food(name, description, weight, healthPoints);
-        roomItems.add(food);
+        roomItems.add(new Food(name, description, weight, healthPoints));
     }
 
     public void addMeleeWeapon(String name, String description, int weight, int attackPoints) {
