@@ -69,7 +69,7 @@ public class UserInterface {
                     }
                     else {
                         System.out.println("Dropped: " + adventure.inventoryToString());
-                    adventure.dropAllItems();}
+                        adventure.dropAllItems();}
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
