@@ -88,6 +88,10 @@ public class Room {
         roomItems.add(new MeleeWeapon(name, description, weight, attackPoints));
     }
 
+    public void addRangedWeapon(String name, String description, int weight, int attackpoints, int ammunition) {
+        roomItems.add(new RangedWeapon(name, description, weight, attackpoints, ammunition));
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;

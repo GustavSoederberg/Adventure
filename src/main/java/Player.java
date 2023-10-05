@@ -200,6 +200,12 @@ public class Player {
         return totalWeight;
     }
 
+    public void attackTest(){
+        if(equippedWeapon != null) {
+            health = health - equippedWeapon.getAttackPoints();
+        }
+    }
+
     public boolean inventoryIsEmpty() {
         if (inventory.isEmpty()) {
             return true;

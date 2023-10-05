@@ -82,7 +82,7 @@ public class UserInterface {
                         case NOT_FOUND -> System.out.println("No weapon found with that name");
                     }
                 }
-                case "attack" -> {}//Attack with equipped weapon
+                case "attack" -> {adventure.attackTest();}
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
                     adventure.teleport();

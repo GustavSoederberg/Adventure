@@ -87,6 +87,10 @@ public class Adventure {
 
     }
 
+    public void attackTest(){
+        player.attackTest();
+    }
+
     public boolean move(String direction) {
         return player.move(direction);
     }

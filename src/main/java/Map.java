@@ -25,6 +25,7 @@ public class Map {
         Room copenhagen = new Room("Copenhagen", "Population: 1.300.000");
         copenhagen.addFood("Coffee", "A black cup of coffee", 1, 5);
         copenhagen.addFood("Cigarette", "A blue kings cigarette", 1, -10);
+        copenhagen.addRangedWeapon("Gøb", "A gun", 5, 30, 6);
 
         Room flensborg = new Room("Flensborg", "Population: 89.000");
 
