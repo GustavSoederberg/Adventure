@@ -87,7 +87,7 @@ public class Room {
     }
 
     public void addMeleeWeapon(String name, String description, int weight, int attackPoints) {
-        roomItems.add(new Weapon(name, description, weight, attackPoints));
+        roomItems.add(new MeleeWeapon(name, description, weight, attackPoints));
     }
 
     //Setters
