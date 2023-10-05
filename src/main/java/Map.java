@@ -10,7 +10,7 @@ public class Map {
         aalborg.addFood("Rød Aalborg", "Schapps", 4, -99);
         aalborg.addMeleeWeapon("Sværd", "Et Stort sværd", 3, 50);
         aalborg.addMeleeWeapon("Pind", "En lille pind", 1, 4);
-        aalborg.addRangedWeapon("Sniper", "50. cal", 10, 500, 5);
+        aalborg.addRangedWeapon("Sniper", "50. cal", 10, 10, 5);
 
 
         Room kerteminde = new Room("Kerteminde", "Population: 6.000");
