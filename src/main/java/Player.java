@@ -152,7 +152,7 @@ public class Player {
         Item weapon = findItem(searchItem, items);
         if (weapon != null) {
             if (weapon instanceof Weapon) {
-                    equippedWeapon = (Weapon) weapon;
+                    equippedWeapon = (MeleeWeapon)weapon;
                     return Adventure.returnMessage.OK;
             } else
                 return Adventure.returnMessage.CANT;
