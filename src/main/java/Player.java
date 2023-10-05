@@ -8,6 +8,7 @@ public class Player {
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private final int MAX_WEIGHT = 5;
     private int currentInventoryWeight;
+    private Weapon equippedWeapon;
 
     private int health = 100;
 
