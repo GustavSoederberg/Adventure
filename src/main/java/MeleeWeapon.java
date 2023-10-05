@@ -4,7 +4,8 @@ public class MeleeWeapon extends Weapon{
     }
 
     @Override
-    public int remainingUse() {
-        return 1;
+    public int attack() {
+        //Attack function
+        return attackPoints;
     }
 }

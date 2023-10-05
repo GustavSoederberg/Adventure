@@ -206,7 +206,7 @@ public class Player {
 
     public void attackTest(){
         if(equippedWeapon != null) {
-            health = health - equippedWeapon.getAttackPoints();
+            health -= equippedWeapon.attack();
         }
     }
 

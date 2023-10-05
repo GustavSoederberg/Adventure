@@ -60,16 +60,16 @@ public class UserInterface {
                     }
                 }
                 case "drop" -> {
-                    if (!secondWord.equalsIgnoreCase("all")){
-                        switch (adventure.drop(secondWord)){
+                    if (!secondWord.equalsIgnoreCase("all")) {
+                        switch (adventure.drop(secondWord)) {
                             case OK -> System.out.println("Dropped: " + secondWord);
                             case NOT_FOUND -> System.out.println("No items found with that name");
                             case INVENTORY_EMPTY -> System.out.println("You have no items to drop");
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println("Dropped: " + adventure.inventoryToString());
-                        adventure.dropAllItems();}
+                        adventure.dropAllItems();
+                    }
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
@@ -78,14 +78,14 @@ public class UserInterface {
                     }
                     System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
-                case "equip" ->  {
+                case "equip" -> {
                     switch (adventure.equipWeapon(secondWord, adventure.getInventory())) {
-                        case OK -> System.out.println("weapon equipped");
-                        case CANT -> System.out.println("this is not a weapon");
+                        case OK -> System.out.println(adventure.getEquippedWeapon().getName() + " equipped");
+                        case CANT -> System.out.println("This is not a weapon");
                         case NOT_FOUND -> System.out.println("No weapon found with that name");
                     }
                 }
-                case "attack" -> {adventure.attackTest();}
+                case "attack" -> adventure.attackTest();
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
                     adventure.teleport();
@@ -141,6 +141,10 @@ public class UserInterface {
                     gameIsRunning = false;
                 }
                 default -> System.out.println("Please enter a valid command!");
+            }
+            if (adventure.getHealth() < 1) {
+                System.out.println("You died!");
+                gameIsRunning = false;
             }
         }
     }
