@@ -129,4 +129,8 @@ public class Adventure {
     public Item getLastItemAdded() {
         return player.getLastItemAdded();
     }
+
+    public Weapon getEquippedWeapon() {
+        return player.getEquippedWeapon();
+    }
 }

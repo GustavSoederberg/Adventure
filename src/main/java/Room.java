@@ -84,7 +84,10 @@ public class Room {
     public void addFood(String name, String description, int weight, int healthPoints) {
         Food food = new Food(name, description, weight, healthPoints);
         roomItems.add(food);
+    }
 
+    public void addMeleeWeapon(String name, String description, int weight, int attackPoints) {
+        roomItems.add(new Weapon(name, description, weight, attackPoints));
     }
 
     //Setters

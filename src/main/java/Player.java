@@ -251,5 +251,9 @@ public class Player {
     public Item getLastItemAdded() {
         return inventory.get(inventory.size() - 1);
     }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
 }
 
