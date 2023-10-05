@@ -204,10 +204,15 @@ public class Player {
         return totalWeight;
     }
 
-    public void attackTest(){
+    public Adventure.returnMessage attackTest(){
         if(equippedWeapon != null) {
-            health -= equippedWeapon.attack();
+            if (equippedWeapon.remainingUse()>0) {
+                health -= equippedWeapon.attack();
+                return Adventure.returnMessage.OK;
+            }
+            else return Adventure.returnMessage.CANT;
         }
+        return Adventure.returnMessage.NOT_FOUND;
     }
 
     public boolean inventoryIsEmpty() {

@@ -38,7 +38,8 @@ public class UserInterface {
                 case "take" -> {
                     if (!secondWord.equalsIgnoreCase("all")) {
                         switch (adventure.take(secondWord)) {
-                            case OK -> System.out.println("Added: " + adventure.getLastItemAdded().getName() + " to inventory");
+                            case OK ->
+                                    System.out.println("Added: " + adventure.getLastItemAdded().getName() + " to inventory");
                             case CANT -> System.out.println("You cannot carry this.");
                             case NOT_FOUND -> System.out.println("No item found with that name.");
                             case ROOM_EMPTY -> System.out.println("This room is empty");
@@ -85,7 +86,16 @@ public class UserInterface {
                         case NOT_FOUND -> System.out.println("No weapon found with that name");
                     }
                 }
-                case "attack" -> adventure.attackTest();
+                case "attack" -> {
+                    switch (adventure.attackTest()) {
+                        case OK -> System.out.println("attack completed");
+
+                        case CANT -> System.out.println("You have ran out of ammo on this weapon");
+
+                        case NOT_FOUND -> System.out.println("No weapon equipped");
+                    }
+                }
+
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
                     adventure.teleport();
