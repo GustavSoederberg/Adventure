@@ -24,6 +24,10 @@ public class Adventure {
         return player.eat(item);
     }
 
+    public returnMessage equipWeapon(String searchItem, ArrayList<Item> items){
+        return equipWeapon(searchItem,items);
+    }
+
     public returnMessage tryToEat(Item item) {
         return player.tryToEat(item);
     }

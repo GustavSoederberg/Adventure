@@ -76,7 +76,10 @@ public class UserInterface {
                     System.out.println("Equipped weapon: " +adventure.getEquippedWeapon().getName());
                     System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
-                case "equip" ->  {}//Equip weapon
+                case "equip" ->  {
+                    adventure.equipWeapon(secondWord, adventure.getInventory());
+
+                }//Equip weapon
                 case "attack" -> {}//Attack with equipped weapon
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
