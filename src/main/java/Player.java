@@ -254,9 +254,6 @@ public class Player {
         for (Item item : inventory) {
             stringbuilder.append(item.getName() + ", ");
         }
-        if (equippedWeapon != null) {
-            stringbuilder.append("\nEquipped weapon: " + equippedWeapon.getName());
-        }
         return stringbuilder.toString();
     }
 

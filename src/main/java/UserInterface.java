@@ -73,6 +73,9 @@ public class UserInterface {
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
+                    if (adventure.getEquippedWeapon() != null) {
+                        System.out.println("Equipped weapon: " + adventure.getEquippedWeapon().getName());
+                    }
                     System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
                 case "equip" ->  {
