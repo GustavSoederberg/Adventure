@@ -17,7 +17,6 @@ public class Adventure {
         ROOM_EMPTY,
         INVENTORY_EMPTY,
         POISON;
-
     }
 
     public returnMessage eat(Item item) {
@@ -87,8 +86,8 @@ public class Adventure {
 
     }
 
-    public void attackTest(){
-        player.attackTest();
+    public returnMessage attackTest(){
+        return player.attackTest();
     }
 
     public boolean move(String direction) {
