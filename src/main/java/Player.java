@@ -134,15 +134,6 @@ public class Player {
         return null;
     }
 
-    /*public boolean take(Item item) {
-        if ((calculateWeight(inventory) + item.getWeight()) <= MAX_WEIGHT) {
-            inventory.add(item);
-            getCurrentRoom().getRoomItems().remove(item);
-            return true;
-        }
-        return false;
-    }*/
-
     public Adventure.returnMessage take(String searchItemName) {
         if (!roomIsEmpty()) {
             Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
@@ -155,6 +146,18 @@ public class Player {
                 } else return Adventure.returnMessage.CANT;
             } else return Adventure.returnMessage.NOT_FOUND;
         } else return Adventure.returnMessage.ROOM_EMPTY;
+    }
+
+    public Adventure.returnMessage equipWeapon(String searchItem, ArrayList<Item> items){
+        Item weapon = findItem(searchItem, items);
+        if (weapon != null) {
+            if (weapon instanceof Weapon) {
+                    equippedWeapon = (Weapon) weapon;
+                    return Adventure.returnMessage.OK;
+            } else
+                return Adventure.returnMessage.CANT;
+        }
+        else return Adventure.returnMessage.NOT_FOUND;
     }
 
     public Adventure.returnMessage takeAllItems() {

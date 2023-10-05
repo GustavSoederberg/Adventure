@@ -17,6 +17,7 @@ public class Adventure {
         ROOM_EMPTY,
         INVENTORY_EMPTY,
         POISON;
+
     }
 
     public returnMessage eat(Item item) {
