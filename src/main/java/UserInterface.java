@@ -73,13 +73,15 @@ public class UserInterface {
                 }
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
-                    System.out.println("Equipped weapon: " +adventure.getEquippedWeapon().getName());
                     System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
                 }
                 case "equip" ->  {
-                    adventure.equipWeapon(secondWord, adventure.getInventory());
-
-                }//Equip weapon
+                    switch (adventure.equipWeapon(secondWord, adventure.getInventory())) {
+                        case OK -> System.out.println("weapon equipped");
+                        case CANT -> System.out.println("this is not a weapon");
+                        case NOT_FOUND -> System.out.println("No weapon found with that name");
+                    }
+                }
                 case "attack" -> {}//Attack with equipped weapon
                 case "xyzzy" -> {
                     System.out.println("Teleporting to " + adventure.getXyzzyRoom());
