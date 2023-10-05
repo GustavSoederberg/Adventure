@@ -180,6 +180,9 @@ public class Player {
             if (itemFound != null) {
                 getCurrentRoom().getRoomItems().add(itemFound);
                 inventory.remove(itemFound);
+                if (itemFound == equippedWeapon){
+                    equippedWeapon = null;
+                }
                 return Adventure.returnMessage.OK;
             }
             else return Adventure.returnMessage.NOT_FOUND;
@@ -189,6 +192,7 @@ public class Player {
 
     public void dropAllItems() {
         currentRoom.getRoomItems().addAll(inventory);
+        equippedWeapon = null;
         inventory.clear();
     }
 

@@ -12,4 +12,9 @@ public class RangedWeapon extends Weapon{
     public void setAmmunition(int ammunition) {
         this.ammunition = ammunition;
     }
+
+    @Override
+    public int remainingUse() {
+        return ammunition;
+    }
 }
