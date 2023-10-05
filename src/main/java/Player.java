@@ -6,7 +6,7 @@ public class Player {
     private Room currentRoom;
     private Room xyzzyRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
-    private final int MAX_WEIGHT = 5;
+    private final int MAX_WEIGHT = 50;
     private int currentInventoryWeight;
     private Weapon equippedWeapon;
 
@@ -149,10 +149,10 @@ public class Player {
     }
 
     public Adventure.returnMessage equipWeapon(String searchItem, ArrayList<Item> items){
-        Item weapon = findItem(searchItem, items);
-        if (weapon != null) {
-            if (weapon instanceof Weapon) {
-                    equippedWeapon = (MeleeWeapon)weapon;
+        Item itemToEquip = findItem(searchItem, items);
+        if (itemToEquip != null) {
+            if (itemToEquip instanceof Weapon) {
+                    equippedWeapon = (Weapon) itemToEquip;
                     return Adventure.returnMessage.OK;
             } else
                 return Adventure.returnMessage.CANT;
