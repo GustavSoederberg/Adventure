@@ -1,4 +1,4 @@
-public class Weapon extends Item{
+public abstract class Weapon extends Item{
     private int attackPoints;
     public Weapon(String name, String description, int weight, int attackPoints) {
         super(name, description, weight);
