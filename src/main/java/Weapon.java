@@ -5,10 +5,6 @@ public abstract class Weapon extends Item{
         this.attackPoints = attackPoints;
     }
 
-    public int getAttackPoints() {
-        return attackPoints;
-    }
-
     public void setAttackPoints(int attackPoints) {
         this.attackPoints = attackPoints;
     }

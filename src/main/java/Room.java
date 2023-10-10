@@ -15,6 +15,7 @@ public class Room {
     private boolean isLockedWest;
     private boolean isLockedEast;
     private ArrayList<Item> roomItems = new ArrayList<Item>();
+    private ArrayList<Enemy> roomEnemies = new ArrayList<>();
 
     //Constructor
     public Room(String name, String description) {
@@ -76,6 +77,10 @@ public class Room {
         return roomItems;
     }
 
+    public ArrayList<Enemy> getRoomEnemies() {
+        return roomEnemies;
+    }
+
     public void addItem(String name, String description, int weight) {
         roomItems.add(new Item(name, description, weight));
     }
@@ -90,6 +95,10 @@ public class Room {
 
     public void addRangedWeapon(String name, String description, int weight, int attackpoints, int ammunition) {
         roomItems.add(new RangedWeapon(name, description, weight, attackpoints, ammunition));
+    }
+
+    public void addEnemy(String name, String description, int health, Weapon equippedWeapon) {
+        roomEnemies.add(new Enemy(name, description, health, equippedWeapon));
     }
 
     //Setters
@@ -137,6 +146,20 @@ public class Room {
         isLockedEast = lockedEast;
     }
 
+    public Enemy findEnemy(String searchEnemy, ArrayList<Enemy> items) {
+        String searchLower = searchEnemy.toLowerCase();
+        if (searchEnemy.isEmpty() || searchEnemy.equals(" ")) {
+            return null;
+        }
+        for (Enemy enemy : roomEnemies) {
+            String itemNameLower = enemy.getName().toLowerCase();
+            if (itemNameLower.contains(searchLower)) {
+                return enemy;
+            }
+        }
+        return null;
+    }
+
 
     //ToString
     @Override
@@ -148,5 +171,13 @@ public class Room {
                     "\nDescription: " + description +
                     "\nItems in room: " + roomItems;
         }
+    }
+
+    public void addItem(Item item) {
+        roomItems.add(item);
+    }
+
+    public void removeEnemy(Enemy enemy) {
+        roomEnemies.remove(enemy);
     }
 }

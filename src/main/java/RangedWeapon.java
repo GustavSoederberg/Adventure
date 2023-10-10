@@ -5,10 +5,6 @@ public class RangedWeapon extends Weapon{
         this.ammunition = ammunition;
     }
 
-    public void setAmmunition(int ammunition) {
-        this.ammunition = ammunition;
-    }
-
     @Override
     public int remainingUse() {
         return ammunition;

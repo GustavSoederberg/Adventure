@@ -12,6 +12,7 @@ public class Adventure {
 
     enum returnMessage{
         NOT_FOUND,
+        ENEMY_NOT_Found,
         CANT,
         OK,
         ROOM_EMPTY,
@@ -46,12 +47,13 @@ public class Adventure {
 
     public String help() {
         return """
+                ----------------------------------------------------------------------------------------------
                 You're in Denmark.
                 
                 To move between cities you have to write north, south, east and west.
                 
                 You can write look to get at name and description of the current city you're in, as
-                well as any items that may be in that city.
+                well as any items and enemies that may be in that city.
                 
                 To pick up items use the 'take' command followed by an item name or 'all' to pick up all items.
                 
@@ -59,15 +61,12 @@ public class Adventure {
                 
                 To eat or drink items use the 'eat' command followed by the item you want to consume.
                 
+                Use the 'attack' command followed by the name of an enemy to attack.
+                
                 To exit the game write exit.
+                ----------------------------------------------------------------------------------------------
                 """;
     }
-
-    /*public void checkRoomsAroundIsVisited() {
-        if (player.getCurrentRoom().getNorth() != null && !player.getCurrentRoom().getNorth().isVisited()) {
-            System.out.println("North is not visited");
-        }
-    }*/
 
     public ArrayList<Item> getInventory() {
         return player.getInventory();
@@ -75,6 +74,10 @@ public class Adventure {
 
     public Item findItem(String searchItem, ArrayList<Item> items) {
         return player.findItem(searchItem, items);
+    }
+
+    public Enemy findEnemy(String searchEnemy, ArrayList<Enemy> roomEnemies) {
+        return getCurrentRoom().findEnemy(searchEnemy, roomEnemies);
     }
 
     public returnMessage takeAllItems() {
@@ -86,8 +89,8 @@ public class Adventure {
 
     }
 
-    public returnMessage attackTest(){
-        return player.attackTest();
+    public returnMessage attack(Enemy enemy) {
+        return player.attack(enemy);
     }
 
     public boolean move(String direction) {
@@ -116,14 +119,6 @@ public class Adventure {
 
     public String look() {
         return player.look();
-    }
-
-    public boolean inventoryIsEmpty() {
-        return player.inventoryIsEmpty();
-    }
-
-    public boolean roomIsEmpty() {
-        return player.roomIsEmpty();
     }
 
     public String inventoryToString() {

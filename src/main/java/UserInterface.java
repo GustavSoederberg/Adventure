@@ -53,7 +53,7 @@ public class UserInterface {
                                 for (Item item : itemsToTake) {
                                     stringBuilder.append(item.getName() + ", ");
                                 }
-                                System.out.println("Picked up: " + stringBuilder.toString());
+                                System.out.println("Picked up: " + stringBuilder);
                             }
                             case CANT -> System.out.println("You cannot carry this");
                             case ROOM_EMPTY -> System.out.println("No items to take");
@@ -87,12 +87,20 @@ public class UserInterface {
                     }
                 }
                 case "attack" -> {
-                    switch (adventure.attackTest()) {
-                        case OK -> System.out.println("attack completed");
-
-                        case CANT -> System.out.println("You have ran out of ammo on this weapon");
-
+                    Enemy enemyToAttack = adventure.findEnemy(secondWord, adventure.getCurrentRoom().getRoomEnemies());
+                    switch (adventure.attack(enemyToAttack)) {
+                        case OK -> {
+                            System.out.println("Attack completed!");
+                            if (enemyToAttack.isAlive()) {
+                                System.out.println("Enemy HP: " + enemyToAttack.getHealth());
+                                System.out.println("Enemy attacked you with: " + enemyToAttack.attack() + " damage.");
+                            } else{
+                                System.out.println("The enemy died!");
+                            }
+                        }
+                        case CANT -> System.out.println("You have run out of ammo on this weapon");
                         case NOT_FOUND -> System.out.println("No weapon equipped");
+                        case ENEMY_NOT_Found -> System.out.println("No enemy found with that name");
                     }
                 }
 

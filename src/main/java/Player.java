@@ -5,12 +5,11 @@ public class Player {
     //Attributes
     private Room currentRoom;
     private Room xyzzyRoom;
-    private ArrayList<Item> inventory = new ArrayList<Item>();
+    private ArrayList<Item> inventory = new ArrayList<>();
     private final int MAX_WEIGHT = 50;
     private int currentInventoryWeight;
     private Weapon equippedWeapon;
-
-    private int health = 100;
+    private int playerHealth = 100;
 
     //Constructor
     public Player(Room currentRoom) {
@@ -36,12 +35,8 @@ public class Player {
         return MAX_WEIGHT;
     }
 
-    public int getCurrentInventoryWeight() {
-        return currentInventoryWeight;
-    }
-
     public int getHealth() {
-        return health;
+        return playerHealth;
     }
 
     //Setters
@@ -109,6 +104,10 @@ public class Player {
         for (Item item : currentRoom.getRoomItems()) {
             stringBuilder.append(item.getName() + ", ");
         }
+        stringBuilder.append("\nEnemies in city: ");
+        for (Enemy enemy : currentRoom.getRoomEnemies()) {
+            stringBuilder.append(enemy.getName() + ", ");
+        }
         return stringBuilder.toString();
     }
 
@@ -120,7 +119,7 @@ public class Player {
 
     public Item findItem(String searchItem, ArrayList<Item> items) {
         String searchLower = searchItem.toLowerCase();
-        if (searchItem == "" || searchItem == " ") {
+        if (searchItem.isEmpty() || searchItem.equals(" ")) {
             return null;
         }
 
@@ -204,37 +203,41 @@ public class Player {
         return totalWeight;
     }
 
-    public Adventure.returnMessage attackTest(){
-        if(equippedWeapon != null) {
-            if (equippedWeapon.remainingUse()>0) {
-                health -= equippedWeapon.attack();
-                return Adventure.returnMessage.OK;
+    public Adventure.returnMessage attack(Enemy enemy) {
+        if (enemy != null) {
+            if (equippedWeapon != null) {
+                if (equippedWeapon.remainingUse() > 0) {
+                    enemy.hit(equippedWeapon.attack());
+                    if (!enemy.isAlive()) {
+                        currentRoom.addItem(enemy.getEquippedWeapon());
+                        currentRoom.removeEnemy(enemy);
+                    } else {
+                        playerHealth -= enemy.attack();
+                    }
+                    return Adventure.returnMessage.OK;
+                } else {
+                    return Adventure.returnMessage.CANT;
+                }
+            } else {
+                return Adventure.returnMessage.NOT_FOUND;
             }
-            else return Adventure.returnMessage.CANT;
+        } else {
+            return Adventure.returnMessage.ENEMY_NOT_Found;
         }
-        return Adventure.returnMessage.NOT_FOUND;
     }
 
     public boolean inventoryIsEmpty() {
-        if (inventory.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return inventory.isEmpty();
     }
 
     public boolean roomIsEmpty() {
-        if (currentRoom.getRoomItems().isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentRoom.getRoomItems().isEmpty();
     }
 
     public Adventure.returnMessage eat(Item item) {
         if (item != null) {
             if (item instanceof Food) {
-                health += ((Food) item).getHealthPoints();
+                playerHealth += ((Food) item).getHealthPoints();
                 inventory.remove(item);
                 return Adventure.returnMessage.OK;
             } else
@@ -247,7 +250,7 @@ public class Player {
         if (item != null) {
             if (item instanceof Food) {
                 if ((((Food) item).getHealthPoints() > 0)) {
-                    health += ((Food) item).getHealthPoints();
+                    playerHealth += ((Food) item).getHealthPoints();
                     inventory.remove(item);
                     return Adventure.returnMessage.OK;
                 } else {
