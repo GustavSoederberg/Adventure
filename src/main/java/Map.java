@@ -1,12 +1,13 @@
 public class Map {
-    private Room aalborg;
+    private Room startRoom;
 
-    public Room getRoom1() {
-        return aalborg;
+    public Room getStartRoom() {
+        return startRoom;
     }
 
     public void buildMap() {
-        aalborg = new Room("Aalborg", "Population: 120.000");
+        Room aalborg = new Room("Aalborg", "Population: 120.000");
+        startRoom = aalborg;
         aalborg.addFood("Rød Aalborg", "Schapps", 4, -99);
         aalborg.addMeleeWeapon("Sværd", "Et Stort sværd", 3, 50);
         aalborg.addMeleeWeapon("Pind", "En lille pind", 1, 4);

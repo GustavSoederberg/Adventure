@@ -10,11 +10,7 @@ public class Room {
     private Room east;
     private Room west;
     private boolean isVisited;
-    private boolean isLockedNorth;
-    private boolean isLockedSouth;
-    private boolean isLockedWest;
-    private boolean isLockedEast;
-    private ArrayList<Item> roomItems = new ArrayList<Item>();
+    private ArrayList<Item> roomItems = new ArrayList<>();
     private ArrayList<Enemy> roomEnemies = new ArrayList<>();
 
     //Constructor
@@ -22,10 +18,6 @@ public class Room {
         this.name = name;
         this.description = description;
         isVisited = false;
-        isLockedNorth = false;
-        isLockedSouth = false;
-        isLockedEast = false;
-        isLockedWest = false;
     }
 
     //Getters
@@ -57,22 +49,6 @@ public class Room {
         return isVisited;
     }
 
-    public boolean isLockedNorth() {
-        return isLockedNorth;
-    }
-
-    public boolean isLockedSouth() {
-        return isLockedSouth;
-    }
-
-    public boolean isLockedWest() {
-        return isLockedWest;
-    }
-
-    public boolean isLockedEast() {
-        return isLockedEast;
-    }
-
     public ArrayList<Item> getRoomItems() {
         return roomItems;
     }
@@ -83,6 +59,9 @@ public class Room {
 
     public void addItem(String name, String description, int weight) {
         roomItems.add(new Item(name, description, weight));
+    }
+    public void addItem(Item item) {
+        roomItems.add(item);
     }
 
     public void addFood(String name, String description, int weight, int healthPoints) {
@@ -102,14 +81,6 @@ public class Room {
     }
 
     //Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public void setNorth(Room north) {
         this.north = north;
     }
@@ -130,23 +101,7 @@ public class Room {
         this.isVisited = isVisited;
     }
 
-    public void setLockedNorth(boolean lockedNorth) {
-        isLockedNorth = lockedNorth;
-    }
-
-    public void setLockedSouth(boolean lockedSouth) {
-        isLockedSouth = lockedSouth;
-    }
-
-    public void setLockedWest(boolean lockedWest) {
-        isLockedWest = lockedWest;
-    }
-
-    public void setLockedEast(boolean lockedEast) {
-        isLockedEast = lockedEast;
-    }
-
-    public Enemy findEnemy(String searchEnemy, ArrayList<Enemy> items) {
+    public Enemy findEnemy(String searchEnemy) {
         String searchLower = searchEnemy.toLowerCase();
         if (searchEnemy.isEmpty() || searchEnemy.equals(" ")) {
             return null;
@@ -158,6 +113,9 @@ public class Room {
             }
         }
         return null;
+    }
+    public void removeEnemy(Enemy enemy) {
+        roomEnemies.remove(enemy);
     }
 
 
@@ -171,13 +129,5 @@ public class Room {
                     "\nDescription: " + description +
                     "\nItems in room: " + roomItems;
         }
-    }
-
-    public void addItem(Item item) {
-        roomItems.add(item);
-    }
-
-    public void removeEnemy(Enemy enemy) {
-        roomEnemies.remove(enemy);
     }
 }
