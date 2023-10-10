@@ -7,7 +7,7 @@ public class Adventure {
     public Adventure() {
         Map map = new Map();
         map.buildMap();
-        player = new Player(map.getRoom1());
+        player = new Player(map.getStartRoom());
     }
 
     enum returnMessage{
@@ -17,11 +17,11 @@ public class Adventure {
         OK,
         ROOM_EMPTY,
         INVENTORY_EMPTY,
-        POISON;
+        POISON
     }
 
-    public returnMessage eat(Item item) {
-        return player.eat(item);
+    public void eat(Item item) {
+        player.eat(item);
     }
 
     public returnMessage equipWeapon(String searchItem, ArrayList<Item> items){
@@ -76,8 +76,8 @@ public class Adventure {
         return player.findItem(searchItem, items);
     }
 
-    public Enemy findEnemy(String searchEnemy, ArrayList<Enemy> roomEnemies) {
-        return getCurrentRoom().findEnemy(searchEnemy, roomEnemies);
+    public Enemy findEnemy(String searchEnemy) {
+        return getCurrentRoom().findEnemy(searchEnemy);
     }
 
     public returnMessage takeAllItems() {

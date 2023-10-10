@@ -54,7 +54,7 @@ public class Player {
     public boolean move(String direction) {
         switch (direction) {
             case "east" -> {
-                if (currentRoom.getEast() != null && !currentRoom.getEast().isLockedWest()) {
+                if (currentRoom.getEast() != null) {
                     currentRoom = currentRoom.getEast();
                     return true;
 
@@ -64,7 +64,7 @@ public class Player {
 
             }
             case "north" -> {
-                if (currentRoom.getNorth() != null && !currentRoom.getNorth().isLockedSouth()) {
+                if (currentRoom.getNorth() != null) {
                     currentRoom = currentRoom.getNorth();
                     return true;
 
@@ -74,7 +74,7 @@ public class Player {
 
             }
             case "south" -> {
-                if (currentRoom.getSouth() != null && !currentRoom.getSouth().isLockedNorth()) {
+                if (currentRoom.getSouth() != null) {
                     currentRoom = currentRoom.getSouth();
                     return true;
 
@@ -83,7 +83,7 @@ public class Player {
                 }
             }
             case "west" -> {
-                if (currentRoom.getWest() != null && !currentRoom.getWest().isLockedEast()) {
+                if (currentRoom.getWest() != null) {
                     currentRoom = currentRoom.getWest();
                     return true;
 
@@ -234,16 +234,9 @@ public class Player {
         return currentRoom.getRoomItems().isEmpty();
     }
 
-    public Adventure.returnMessage eat(Item item) {
-        if (item != null) {
-            if (item instanceof Food) {
+    public void eat(Item item) {
                 playerHealth += ((Food) item).getHealthPoints();
                 inventory.remove(item);
-                return Adventure.returnMessage.OK;
-            } else
-                return Adventure.returnMessage.CANT;
-        } else return Adventure.returnMessage.NOT_FOUND;
-
     }
 
     public Adventure.returnMessage tryToEat(Item item) {
