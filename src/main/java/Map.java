@@ -17,14 +17,19 @@ public class Map {
 
         Room kerteminde = new Room("Kerteminde", "Population: 6.000");
         kerteminde.addFood("Ice Cream", "A delicious ice cream", 2, 20);
+        kerteminde.addEnemy("Kenned", "50 year old drunk guy at the bar", 30, new MeleeWeapon("Broken Tuborg", "Broken bottle of beer", 2, 14));
 
         Room helsingør = new Room("Helsingør", "Population: 47.000");
+        helsingør.addEnemy("Gitte", "chairman of the local cultural association", 50, new MeleeWeapon("Magazine from B.T.", "Magazine with all the latest news about the royal family", 1, 8));
+        helsingør.addRangedWeapon("Sniper", "50. cal", 10, 30, 5);
 
         Room randers = new Room("Randers", "Population: 62.000");
+        randers.addFood("Mokaï", "Alcoholic beverage that gives a lot of energy", 2, 40);
         randers.addItem("Scooter", "An illegal, and likely stolen, scooter", 15);
 
         Room odense = new Room("Odense", "Population: 500.000");
         odense.addFood("Odense Pilsner", "Nice beer from Odense", 2, 30);
+        odense.addEnemy("Spørge-Jørgen", "guys who works at the dock", 45, new MeleeWeapon("plate with flæskestegssandwich", "plate with flæskestegssandwich from Havnens Perle" , 2, 9));
 
         Room copenhagen = new Room("Copenhagen", "Population: 1.300.000");
         copenhagen.addFood("Coffee", "A black cup of coffee", 1, 5);

@@ -9,6 +9,18 @@ public class Adventure {
         map.buildMap();
         player = new Player(map.getStartRoom());
     }
+    public void printStartMessage(){
+        System.out.println("""
+                Welcome to the adventure game!
+                In this game you will explore som of Denmarks greatest cities.
+                You will find weapons and food in the cities around you and
+                use them to fight against the different bosses in the game. 
+                To start the game write: "go" and then north, south, east or west
+                depending on the direction you want to go. 
+                You can always write "help" if you're stuck or don't know what to do.
+                Good luck!
+                """);
+    }
 
     enum returnMessage{
         NOT_FOUND,
@@ -39,8 +51,16 @@ public class Adventure {
     public Room getXyzzyRoom() {
         return player.getXyzzyRoom();
     }
+
+    public boolean currentRoomIsVisited(){
+        return player.currentRoomIsVisited();
+    }
     public returnMessage drop(String searchItem){
         return player.drop(searchItem);
+    }
+
+    public void setCurrentRoomIsVisited(boolean isVisited){
+        player.setCurrentRoomIsVisited(isVisited);
     }
 
     //Methods
@@ -50,7 +70,8 @@ public class Adventure {
                 ----------------------------------------------------------------------------------------------
                 You're in Denmark.
                 
-                To move between cities you have to write north, south, east and west.
+                To move between cities you have to write go and then north, south, east and west depending
+                on which direction you want to go.
                 
                 You can write look to get at name and description of the current city you're in, as
                 well as any items and enemies that may be in that city.
@@ -86,7 +107,6 @@ public class Adventure {
 
     public returnMessage take(String item) {
         return player.take(item);
-
     }
 
     public returnMessage attack(Enemy enemy) {
@@ -109,8 +129,8 @@ public class Adventure {
         player.dropAllItems();
     }
 
-    public int calculateWeight(ArrayList<Item> items) {
-        return player.calculateWeight(items);
+    public int calculateInventoryWeight() {
+        return player.calculateInventoryWeight();
     }
 
     public int getMAX_WEIGHT() {
@@ -129,11 +149,15 @@ public class Adventure {
         return player.getHealth();
     }
 
-    public Item getLastItemAdded() {
-        return player.getLastItemAdded();
+    public String getNameOfLastItemAdded() {
+        return player.getNameOfLastItemAdded();
     }
 
     public Weapon getEquippedWeapon() {
         return player.getEquippedWeapon();
+    }
+
+    public String getWeaponName(){
+        return player.getWeaponName();
     }
 }

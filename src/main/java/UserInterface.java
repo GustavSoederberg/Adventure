@@ -12,8 +12,7 @@ public class UserInterface {
 
     public void start() {
         boolean gameIsRunning = true;
-        System.out.println("Welcome to the adventure game!");
-
+        adventure.printStartMessage();
 
         while (gameIsRunning) {
             System.out.println("Awaiting your command:");
@@ -26,10 +25,10 @@ public class UserInterface {
                 case "go" -> {
                     if (adventure.move(secondWord)) {
                         System.out.println("Moved " + secondWord + "\n" + adventure.getCurrentRoom());
-                        if (adventure.getCurrentRoom().isVisited()) {
+                        if (adventure.currentRoomIsVisited()) {
                             System.out.println("You've been here before");
                         } else {
-                            adventure.getCurrentRoom().setVisited(true);
+                            adventure.setCurrentRoomIsVisited(true);
                         }
                     } else {
                         System.out.println("You cannot go that way!");
@@ -39,7 +38,7 @@ public class UserInterface {
                     if (!secondWord.equalsIgnoreCase("all")) {
                         switch (adventure.take(secondWord)) {
                             case OK ->
-                                    System.out.println("Added: " + adventure.getLastItemAdded().getName() + " to inventory");
+                                    System.out.println("Added: " + adventure.getNameOfLastItemAdded() + " to inventory");
                             case CANT -> System.out.println("You cannot carry this.");
                             case NOT_FOUND -> System.out.println("No item found with that name.");
                             case ROOM_EMPTY -> System.out.println("This room is empty");
@@ -75,13 +74,14 @@ public class UserInterface {
                 case "inventory" -> {
                     System.out.println("Your inventory consists of: " + adventure.inventoryToString());
                     if (adventure.getEquippedWeapon() != null) {
-                        System.out.println("Equipped weapon: " + adventure.getEquippedWeapon().getName());
+                        System.out.println("Equipped weapon: " + adventure.getWeaponName());
                     }
-                    System.out.println("Current weight: " + adventure.calculateWeight(adventure.getInventory()) + "/" + adventure.getMAX_WEIGHT());
+                    System.out.println("Current weight: " + adventure.calculateInventoryWeight() +
+                                       "/" + adventure.getMAX_WEIGHT());
                 }
                 case "equip" -> {
                     switch (adventure.equipWeapon(secondWord, adventure.getInventory())) {
-                        case OK -> System.out.println(adventure.getEquippedWeapon().getName() + " equipped");
+                        case OK -> System.out.println(adventure.getWeaponName() + " equipped");
                         case CANT -> System.out.println("This is not a weapon");
                         case NOT_FOUND -> System.out.println("No weapon found with that name");
                     }
@@ -94,7 +94,7 @@ public class UserInterface {
                             if (enemyToAttack.isAlive()) {
                                 System.out.println("Enemy HP: " + enemyToAttack.getHealth());
                                 System.out.println("Enemy attacked you with: " + enemyToAttack.attack() + " damage.");
-                            } else{
+                            } else {
                                 System.out.println("The enemy died!");
                             }
                         }
@@ -109,8 +109,7 @@ public class UserInterface {
                     adventure.teleport();
                 }
                 case "eat" -> {
-                    Item itemToEat;
-                    itemToEat = adventure.findItem(secondWord, adventure.getInventory());
+                    Item itemToEat = adventure.findItem(secondWord, adventure.getInventory());
                     switch (adventure.tryToEat(itemToEat)) {
                         case NOT_FOUND -> System.out.println("Item to eat not found");
                         case CANT -> System.out.println("You can eat " + itemToEat);

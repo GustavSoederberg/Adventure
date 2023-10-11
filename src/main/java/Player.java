@@ -39,10 +39,25 @@ public class Player {
         return playerHealth;
     }
 
+    public String getWeaponName(){
+        return equippedWeapon.getName();
+    }
+
+    public ArrayList<Item> getCurrentRoomItems() {
+        return getCurrentRoom().getRoomItems();
+    }
+
+    public boolean currentRoomIsVisited(){
+        return currentRoom.isVisited();
+    }
+
     //Setters
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
 
+    }
+    public void setCurrentRoomIsVisited(boolean isVisited){
+        currentRoom.setVisited(isVisited);
     }
 
     public void setXyzzyRoom(Room xyzzyRoom) {
@@ -135,7 +150,7 @@ public class Player {
 
     public Adventure.returnMessage take(String searchItemName) {
         if (!roomIsEmpty()) {
-            Item itemFound = findItem(searchItemName, getCurrentRoom().getRoomItems());
+            Item itemFound = findItem(searchItemName, getCurrentRoomItems());
             if (itemFound != null) {
                 if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
                     inventory.add(itemFound);
@@ -147,16 +162,15 @@ public class Player {
         } else return Adventure.returnMessage.ROOM_EMPTY;
     }
 
-    public Adventure.returnMessage equipWeapon(String searchItem, ArrayList<Item> items){
+    public Adventure.returnMessage equipWeapon(String searchItem, ArrayList<Item> items) {
         Item itemToEquip = findItem(searchItem, items);
         if (itemToEquip != null) {
             if (itemToEquip instanceof Weapon) {
-                    equippedWeapon = (Weapon) itemToEquip;
-                    return Adventure.returnMessage.OK;
+                equippedWeapon = (Weapon) itemToEquip;
+                return Adventure.returnMessage.OK;
             } else
                 return Adventure.returnMessage.CANT;
-        }
-        else return Adventure.returnMessage.NOT_FOUND;
+        } else return Adventure.returnMessage.NOT_FOUND;
     }
 
     public Adventure.returnMessage takeAllItems() {
@@ -175,18 +189,16 @@ public class Player {
 
     public Adventure.returnMessage drop(String searchItem) {
         if (!inventoryIsEmpty()) {
-            Item itemFound = findItem(searchItem,inventory);
+            Item itemFound = findItem(searchItem, inventory);
             if (itemFound != null) {
                 getCurrentRoom().getRoomItems().add(itemFound);
                 inventory.remove(itemFound);
-                if (itemFound == equippedWeapon){
+                if (itemFound == equippedWeapon) {
                     equippedWeapon = null;
                 }
                 return Adventure.returnMessage.OK;
-            }
-            else return Adventure.returnMessage.NOT_FOUND;
-        }
-        else return Adventure.returnMessage.INVENTORY_EMPTY;
+            } else return Adventure.returnMessage.NOT_FOUND;
+        } else return Adventure.returnMessage.INVENTORY_EMPTY;
     }
 
     public void dropAllItems() {
@@ -235,8 +247,8 @@ public class Player {
     }
 
     public void eat(Item item) {
-                playerHealth += ((Food) item).getHealthPoints();
-                inventory.remove(item);
+        playerHealth += ((Food) item).getHealthPoints();
+        inventory.remove(item);
     }
 
     public Adventure.returnMessage tryToEat(Item item) {
@@ -262,8 +274,8 @@ public class Player {
         return stringbuilder.toString();
     }
 
-    public Item getLastItemAdded() {
-        return inventory.get(inventory.size() - 1);
+    public String getNameOfLastItemAdded() {
+        return inventory.get(inventory.size() - 1).getName();
     }
 
     public Weapon getEquippedWeapon() {
