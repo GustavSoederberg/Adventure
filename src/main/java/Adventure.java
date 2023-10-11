@@ -76,7 +76,8 @@ public class Adventure {
                 You can write look to get at name and description of the current city you're in, as
                 well as any items and enemies that may be in that city.
                 
-                To pick up items use the 'take' command followed by an item name or 'all' to pick up all items.
+                To pick up items use the 'take' command followed by an item name or 'all' to pick up all items
+                in a room.
                 
                 To drop items use the 'drop' command followed by an item name or 'all' to drop all items.
                 

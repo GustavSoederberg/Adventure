@@ -72,8 +72,8 @@ public class Room {
         roomItems.add(new MeleeWeapon(name, description, weight, attackPoints));
     }
 
-    public void addRangedWeapon(String name, String description, int weight, int attackpoints, int ammunition) {
-        roomItems.add(new RangedWeapon(name, description, weight, attackpoints, ammunition));
+    public void addRangedWeapon(String name, String description, int weight, int attackPoints, int ammunition) {
+        roomItems.add(new RangedWeapon(name, description, weight, attackPoints, ammunition));
     }
 
     public void addEnemy(String name, String description, int health, Weapon equippedWeapon) {
@@ -117,6 +117,20 @@ public class Room {
     public void removeEnemy(Enemy enemy) {
         roomEnemies.remove(enemy);
     }
+
+    public void removeItem(Item item) {
+        roomItems.remove(item);
+    }
+
+    public void removeAllItems() {
+        roomItems.clear();
+    }
+
+    public void addAllItemsFromList(ArrayList<Item> itemArrayList) {
+        roomItems.addAll(itemArrayList);
+    }
+
+
 
 
     //ToString

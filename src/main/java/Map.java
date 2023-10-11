@@ -9,10 +9,8 @@ public class Map {
         Room aalborg = new Room("Aalborg", "Population: 120.000");
         startRoom = aalborg;
         aalborg.addFood("Rød Aalborg", "Schapps", 4, -99);
-        aalborg.addMeleeWeapon("Sværd", "Et Stort sværd", 3, 50);
-        aalborg.addMeleeWeapon("Pind", "En lille pind", 1, 4);
-        aalborg.addRangedWeapon("Sniper", "50. cal", 10, 10, 5);
-        aalborg.addEnemy("Trold", "En stor grim trold", 50, new MeleeWeapon("Rød Aalborg", "Schapps", 4, 5));
+        aalborg.addMeleeWeapon("Sword", "An enormous sword", 3, 20);
+        aalborg.addMeleeWeapon("Stick", "A small stick", 1, 4);
 
 
         Room kerteminde = new Room("Kerteminde", "Population: 6.000");
@@ -37,11 +35,17 @@ public class Map {
         copenhagen.addRangedWeapon("Gøb", "A gun", 5, 30, 6);
 
         Room flensborg = new Room("Flensborg", "Population: 89.000");
+        flensborg.addFood("Sodavand", "A crate of Coca cola", 30, 100);
+        flensborg.addFood("Candy", "1 Kg Haribo Matador mix", 10, 75);
+        flensborg.addEnemy("Border police", "An angry policeman from border control", 70, new RangedWeapon("Pistol", "A black gun", 2, 20, 20));
 
         Room svendborg = new Room("Svendborg", "Population: 87.000");
+        svendborg.addFood("Durum", "A durum, filled with delicious kebab and chicken", 1, 100);
+        svendborg.addEnemy("Ogre", "A big ugly ogre", 50, new MeleeWeapon("Rød Aalborg", "Schapps", 4, 5));
 
         Room faxe = new Room("Faxe", "Population: 4.000");
-        faxe.addFood("Faxe Kondi", "A delicious soda", 2, 30);
+        faxe.addFood("Faxe Kondi", "A refreshing soda", 2, 30);
+        faxe.addEnemy("John Faxe [FINAL BOSS]", "Retired footballplayer", 200, new MeleeWeapon("Guds højrefod", "Right food of god, used in 1992 to win the Euros for Denmark", 45, 40));
 
 
         //Room 1

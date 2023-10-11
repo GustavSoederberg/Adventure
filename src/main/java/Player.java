@@ -155,7 +155,7 @@ public class Player {
                 if ((calculateWeight(inventory) + itemFound.getWeight()) <= MAX_WEIGHT) {
                     inventory.add(itemFound);
                     currentInventoryWeight = calculateWeight(inventory);
-                    getCurrentRoom().getRoomItems().remove(itemFound);
+                    getCurrentRoom().removeItem(itemFound);
                     return Adventure.returnMessage.OK;
                 } else return Adventure.returnMessage.CANT;
             } else return Adventure.returnMessage.NOT_FOUND;
@@ -179,7 +179,7 @@ public class Player {
         } else if (calculateWeight(currentRoom.getRoomItems()) + currentInventoryWeight <= MAX_WEIGHT) {
             inventory.addAll(currentRoom.getRoomItems());
             currentInventoryWeight = calculateWeight(inventory);
-            getCurrentRoom().getRoomItems().clear();
+            getCurrentRoom().removeAllItems();
             return Adventure.returnMessage.OK;
         } else {
             return Adventure.returnMessage.CANT;
@@ -191,7 +191,7 @@ public class Player {
         if (!inventoryIsEmpty()) {
             Item itemFound = findItem(searchItem, inventory);
             if (itemFound != null) {
-                getCurrentRoom().getRoomItems().add(itemFound);
+                getCurrentRoom().addItem(itemFound);
                 inventory.remove(itemFound);
                 if (itemFound == equippedWeapon) {
                     equippedWeapon = null;
@@ -202,7 +202,7 @@ public class Player {
     }
 
     public void dropAllItems() {
-        currentRoom.getRoomItems().addAll(inventory);
+        currentRoom.addAllItemsFromList(inventory);
         equippedWeapon = null;
         inventory.clear();
     }
@@ -213,6 +213,10 @@ public class Player {
             totalWeight += item.getWeight();
         }
         return totalWeight;
+    }
+
+    public int calculateInventoryWeight(){
+        return calculateWeight(inventory);
     }
 
     public Adventure.returnMessage attack(Enemy enemy) {
