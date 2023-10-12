@@ -60,6 +60,7 @@ public class Room {
     public void addItem(String name, String description, int weight) {
         roomItems.add(new Item(name, description, weight));
     }
+
     public void addItem(Item item) {
         roomItems.add(item);
     }
@@ -114,6 +115,7 @@ public class Room {
         }
         return null;
     }
+
     public void removeEnemy(Enemy enemy) {
         roomEnemies.remove(enemy);
     }
@@ -130,18 +132,39 @@ public class Room {
         roomItems.addAll(itemArrayList);
     }
 
+    public boolean roomHasEnemies() {
+        return !roomEnemies.isEmpty();
+    }
 
+    public boolean roomHasItems() {
+        return !roomItems.isEmpty();
+    }
+
+    public Enemy getEnemyIndex(int i) {
+        return roomEnemies.get(i);
+    }
 
 
     //ToString
     @Override
     public String toString() {
-        if (isVisited) {
-            return "Room name: " + name + "\nItems in room: " + roomItems;
-        } else {
-            return "Room name: " + name +
-                    "\nDescription: " + description +
-                    "\nItems in room: " + roomItems;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("City name: " + name + "\n");
+        if (!isVisited) {
+            stringBuilder.append("Description: " + description);
+        }
+        if (roomHasItems()) {
+            stringBuilder.append("\nItems in room: ");
+            for (Item item : roomItems) {
+                stringBuilder.append(item.getName() + " (" + item.getDescription() + "), ");
+            }
+        }
+        if (roomHasEnemies()) {
+            stringBuilder.append("\nEnemies in room: ");
+            for (Enemy enemy : roomEnemies) {
+                stringBuilder.append(enemy.getName() + " (" + enemy.getDescription() + "), ");
+            }
+        }
+        return stringBuilder.toString();
         }
     }
-}

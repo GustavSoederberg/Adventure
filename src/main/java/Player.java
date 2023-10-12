@@ -56,13 +56,13 @@ public class Player {
     }
 
     public Enemy getEnemyIndex(int i) {
-        return getCurrentRoom().getRoomEnemies().get(i);
+        return getCurrentRoom().getEnemyIndex(i);
     }
 
     //Boolean getters
 
     public boolean roomHasEnemies() {
-        return !currentRoom.getRoomEnemies().isEmpty();
+        return !currentRoom.roomHasEnemies();
     }
 
     public boolean currentRoomIsVisited() {
