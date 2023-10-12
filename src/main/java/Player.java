@@ -237,9 +237,7 @@ public class Player {
                 } else {
                     return Adventure.returnMessage.CANT;
                 }
-            } else {
-                return Adventure.returnMessage.NOT_FOUND;
-            }
+            } else return Adventure.returnMessage.NOT_FOUND;
         } else {
             return Adventure.returnMessage.ENEMY_NOT_FOUND;
         }
@@ -287,6 +285,10 @@ public class Player {
 
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
+    }
+
+    public Enemy getEnemyIndex(int i){
+        return getCurrentRoom().getRoomEnemies().get(i);
     }
 }
 

@@ -158,6 +158,7 @@ public class Adventure {
         return player.getEquippedWeapon();
     }
 
+    public Enemy getEnemyIndex(int i){return player.getEnemyIndex(i);}
     public String getWeaponName(){
         return player.getWeaponName();
     }
