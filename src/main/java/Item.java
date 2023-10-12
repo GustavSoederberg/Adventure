@@ -9,7 +9,7 @@ public class Item {
         this.description = description;
         this.weight = weight;
     }
-
+    //Getters
     public String getName() {
         return name;
     }

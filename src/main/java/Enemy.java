@@ -10,7 +10,7 @@ public class Enemy {
         this.health = health;
         this.equippedWeapon = equippedWeapon;
     }
-
+    //Getters
     public String getName() {
         return name;
     }
@@ -18,6 +18,8 @@ public class Enemy {
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
+
+    //Methods
 
     public int getHealth() {
         return health;
