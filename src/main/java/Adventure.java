@@ -14,9 +14,9 @@ public class Adventure {
                 Welcome to the adventure game!
                 In this game you will explore som of Denmarks greatest cities.
                 You will find weapons and food in the cities around you and
-                use them to fight against the different bosses in the game. 
+                use them to fight against the different bosses in the game.
                 To start the game write: "go" and then north, south, east or west
-                depending on the direction you want to go. 
+                depending on the direction you want to go.
                 You can always write "help" if you're stuck or don't know what to do.
                 Good luck!
                 """);
