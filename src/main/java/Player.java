@@ -220,7 +220,10 @@ public class Player {
     }
 
     public Adventure.returnMessage attack(Enemy enemy) {
-        if (enemy != null) {
+        if (enemy != null || !currentRoom.getRoomEnemies().isEmpty()) {
+            if (enemy == null) {
+                enemy = currentRoom.getRoomEnemies().get(0);
+            }
             if (equippedWeapon != null) {
                 if (equippedWeapon.remainingUse() > 0) {
                     enemy.hit(equippedWeapon.attack());
@@ -238,7 +241,7 @@ public class Player {
                 return Adventure.returnMessage.NOT_FOUND;
             }
         } else {
-            return Adventure.returnMessage.ENEMY_NOT_Found;
+            return Adventure.returnMessage.ENEMY_NOT_FOUND;
         }
     }
 

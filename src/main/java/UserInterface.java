@@ -100,7 +100,7 @@ public class UserInterface {
                         }
                         case CANT -> System.out.println("You have run out of ammo on this weapon");
                         case NOT_FOUND -> System.out.println("No weapon equipped");
-                        case ENEMY_NOT_Found -> System.out.println("No enemy found with that name");
+                        case ENEMY_NOT_FOUND -> System.out.println("No enemy found with that name");
                     }
                 }
 

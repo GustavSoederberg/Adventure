@@ -24,7 +24,7 @@ public class Adventure {
 
     enum returnMessage{
         NOT_FOUND,
-        ENEMY_NOT_Found,
+        ENEMY_NOT_FOUND,
         CANT,
         OK,
         ROOM_EMPTY,
