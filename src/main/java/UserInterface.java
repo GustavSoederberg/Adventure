@@ -87,8 +87,8 @@ public class UserInterface {
                     }
                 }
                 case "attack" -> {
-                    if (secondWord.equals("") && !adventure.getCurrentRoom().getRoomEnemies().isEmpty()) {
-                        Enemy enemyToAttack = adventure.getCurrentRoom().getRoomEnemies().get(0);
+                    if (secondWord.equals("") && adventure.roomHasEnemies()) {
+                        Enemy enemyToAttack = adventure.getEnemyIndex(0);
                         switch (adventure.attack(enemyToAttack)) {
                             case OK -> {
                                 System.out.println("Attack completed!");

@@ -287,5 +287,9 @@ public class Player {
     public Enemy getEnemyIndex(int i){
         return getCurrentRoom().getRoomEnemies().get(i);
     }
+
+    public boolean roomHasEnemies(){
+        return !currentRoom.getRoomEnemies().isEmpty();
+    }
 }
 

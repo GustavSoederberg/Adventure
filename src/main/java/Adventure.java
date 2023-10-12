@@ -162,4 +162,8 @@ public class Adventure {
     public String getWeaponName(){
         return player.getWeaponName();
     }
+
+    public boolean roomHasEnemies(){
+        return player.roomHasEnemies();
+    }
 }
