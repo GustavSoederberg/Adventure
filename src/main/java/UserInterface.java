@@ -87,20 +87,37 @@ public class UserInterface {
                     }
                 }
                 case "attack" -> {
-                    Enemy enemyToAttack = adventure.findEnemy(secondWord);
-                    switch (adventure.attack(enemyToAttack)) {
-                        case OK -> {
-                            System.out.println("Attack completed!");
+                    if (secondWord.equals("") && !adventure.getCurrentRoom().getRoomEnemies().isEmpty()) {
+                        Enemy enemyToAttack = adventure.getCurrentRoom().getRoomEnemies().get(0);
+                        switch (adventure.attack(enemyToAttack)) {
+                            case OK -> {
+                                System.out.println("Attack completed!");
                                 if (enemyToAttack.isAlive()) {
                                     System.out.println("Enemy HP: " + enemyToAttack.getHealth());
                                     System.out.println("Enemy attacked you with: " + enemyToAttack.attack() + " damage.");
                                 } else {
                                     System.out.println("The enemy died!");
                                 }
+                            }
+                            case CANT -> System.out.println("You have run out of ammo on this weapon");
+                            case NOT_FOUND -> System.out.println("No weapon equipped");
                         }
-                        case CANT -> System.out.println("You have run out of ammo on this weapon");
-                        case NOT_FOUND -> System.out.println("No weapon equipped");
-                        case ENEMY_NOT_FOUND -> System.out.println("No enemy found with that name");
+                    } else {
+                        Enemy enemyToAttack = adventure.findEnemy(secondWord);
+                        switch (adventure.attack(enemyToAttack)) {
+                            case OK -> {
+                                System.out.println("Attack completed!");
+                                if (enemyToAttack.isAlive()) {
+                                    System.out.println("Enemy HP: " + enemyToAttack.getHealth());
+                                    System.out.println("Enemy attacked you with: " + enemyToAttack.attack() + " damage.");
+                                } else {
+                                    System.out.println("The enemy died!");
+                                }
+                            }
+                            case CANT -> System.out.println("You have run out of ammo on this weapon");
+                            case NOT_FOUND -> System.out.println("No weapon equipped");
+                            case ENEMY_NOT_FOUND -> System.out.println("No enemy found with that name");
+                        }
                     }
                 }
 

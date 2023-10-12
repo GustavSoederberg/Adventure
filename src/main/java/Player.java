@@ -220,10 +220,7 @@ public class Player {
     }
 
     public Adventure.returnMessage attack(Enemy enemy) {
-        if (enemy != null || !currentRoom.getRoomEnemies().isEmpty()) {
-            if (enemy == null) {
-                enemy = currentRoom.getRoomEnemies().get(0);
-            }
+        if (enemy != null) {
             if (equippedWeapon != null) {
                 if (equippedWeapon.remainingUse() > 0) {
                     enemy.hit(equippedWeapon.attack());
