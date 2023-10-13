@@ -6,7 +6,7 @@ public class Player {
     private Room currentRoom;
     private Room xyzzyRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
-    private final int MAX_WEIGHT = 50;
+    private final int MAX_WEIGHT = 10;
     private int currentInventoryWeight;
     private Weapon equippedWeapon;
     private int playerHealth = 100;
@@ -62,7 +62,7 @@ public class Player {
     //Boolean getters
 
     public boolean roomHasEnemies() {
-        return !currentRoom.roomHasEnemies();
+        return currentRoom.roomHasEnemies();
     }
 
     public boolean currentRoomIsVisited() {
